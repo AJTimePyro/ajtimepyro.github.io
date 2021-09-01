@@ -1,0 +1,242 @@
+
+
+/* CSS Reset */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* CSS Variable */
+:root{
+    --layout: flex;
+    --logo-color: #1fb598;
+}
+
+/* CSS Start */
+
+#container{
+    display: var(--layout);
+    height: 100px;
+    background-color: var(--logo-color);
+}
+
+.body{
+    background-color: var(--logo-color);
+    background-image: url("img\\background.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    height: 500px;
+}
+
+#body{
+    display: var(--layout);
+    background-color: #82e7fb;
+}
+
+#container nav div button{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Ubuntu';
+    background-color: var(--logo-color);
+    cursor: pointer;
+    border: 0px none;
+    padding: 15px;
+    padding-top: 40px;
+    padding-bottom: 36px;
+    color: #9eefe4;
+}
+
+#container nav .menu button:hover, #container nav .active button{
+    background-color: #33bea3;
+}
+
+#container nav .menu{
+    padding: 5vw;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#container nav{
+    display: var(--layout);
+}
+
+#container #logo img{
+    padding-right: 150px;
+    border-radius: 50px;
+    height: 100px;
+}
+
+.box4{
+    display: var(--layout);
+    padding: 10%;
+    padding-left: 4%;
+    width: 96vw;
+    margin-right: 10%;
+    margin-bottom: 62px;
+}
+
+#header{
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 20vh;
+}
+
+#content{
+    display: var(--layout);
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    padding-top: 0px;
+    height: 100vh;
+}
+
+#contact{
+    display: var(--layout);
+    padding-left: 5%;
+}
+
+#contact nav{
+    border: 8px solid #088470;
+    background-color: #5ac5b4;
+    border-radius: 50px;
+    padding: 2px;
+    color: black;
+    font-size: 13vh;
+    font-family: 'Titillium Web', sans-serif;
+    cursor: pointer;
+}
+
+#contact nav:hover{
+    background-color: #5efdde;
+}
+
+#content #head{
+    font-family: 'Arvo', serif;
+    color: #fd0000;
+    font-size: 6vh;
+}
+
+#content #para{
+    font-family: 'Padauk', sans-serif;
+    color: white;
+    font-size: 5vh;
+    margin-top: -60px;
+}
+
+@media (max-width: 1000px){
+    #header{
+        font-size: 15vh;
+    }
+    #content{
+        height: 80vh;
+        padding-bottom: 0%;
+    }
+    #content #head{
+        font-size: 5vh;
+    }
+    #content #para{
+        font-size: 4vh;
+    }
+}
+
+@media (max-width: 788px){
+    #container #logo img{
+        padding: 0px;
+    }
+}
+
+@media (max-width: 660px){
+    #header{
+        font-size: 12vh;
+        padding-bottom: 20%;
+    }
+    #content{
+        height: 70vh;
+        padding-bottom: 0%;
+    }
+    #content #head{
+        font-size: 4vh;
+    }
+    #content #para{
+        font-size: 3vh;
+    }
+}
+
+@media (max-width: 573px){
+    #container nav #box3 button{
+        padding-bottom: 12px;
+    }
+    html{
+        display: inline-flex;
+    }
+    #header{
+        font-size: 9vh;
+        padding-bottom: 10%;
+    }
+    #content{
+        height: 50vh;
+        padding-bottom: 0%;
+    }
+    #content #head{
+        font-size: 3.5vh;
+    }
+    #content #para{
+        font-size: 2.5vh;
+    }
+    #contact nav{
+        font-size: 7vh;
+    }
+}
+
+@media (max-width: 375px){
+    #content{
+        height: 60vh;
+        padding-bottom: 0%;
+    }
+    #content #head{
+        font-size: 3vh;
+    }
+    #content #para{
+        font-size: 2vh;
+    }
+}
+
+/* CSS for IPad */
+@media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation:landscape)
+{
+    #header{
+        font-size: 8vh;
+        padding-bottom: 5%;
+    }
+    #contact nav{
+        font-size: 4vh;
+    }
+}
+@media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation:portrait) 
+{
+    #header{
+        font-size: 5vh;
+        padding-bottom: 10%;
+    }
+    #content{
+        height: 34vh;
+        margin-bottom: -10%;
+    }
+    #content #head{
+        font-size: 3vh;
+    }
+    #content #para{
+        font-size: 2vh;
+    }
+    #contact nav{
+        font-size: 3vh;
+    }
+}
