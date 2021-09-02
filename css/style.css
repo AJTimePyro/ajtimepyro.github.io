@@ -31,7 +31,6 @@
 }
 
 #body{
-    display: var(--layout);
     background-color: #82e7fb;
 }
 
@@ -123,6 +122,21 @@
     color: white;
     font-size: 5vh;
     margin-top: -60px;
+}
+
+#contactMenu{
+    display: var(--layout);
+    justify-content: center;
+    /* justify-content: space-evenly; */
+    flex-wrap: wrap;
+}
+
+#contactMenu .icon img{
+    cursor: pointer;
+    margin: 5vh;
+    margin-bottom: 0vh;
+    height: 50px;
+    width: 50px;
 }
 
 @media (max-width: 1000px){
