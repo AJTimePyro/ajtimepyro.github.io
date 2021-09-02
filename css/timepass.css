@@ -1,0 +1,9 @@
+body{
+    background-color: #6ce2f9;
+}
+
+#timepass{
+    padding: 5%;
+    font-size: 10vh;
+    font-family: 'Azeret Mono', monospace;
+}

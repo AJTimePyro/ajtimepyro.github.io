@@ -13,6 +13,13 @@ document.getElementById('box2').addEventListener('click',
     }
 )
 
+// Time Pass Button
+document.getElementById('box3').addEventListener('click',
+    function (evt) {
+        document.location.href = 'timepass.html';
+    }
+)
+
 // Contact Us Button
 let count = 0;
 document.getElementById('contact').addEventListener('click',
@@ -47,33 +54,31 @@ document.getElementById('contact').addEventListener('click',
                     open('https://github.com/AJTimePyro');
                 }
             )
-            // Github
+            // Telegram
             document.getElementById('telegram').addEventListener('click',
                 function (evt) {
                     open('https://t.me/AJTimePyro');
                 }
             )
-            // Telegram
+            // Email
             document.getElementById('email').addEventListener('click',
                 function (evt) {
                     // open('https://github.com/AJTimePyro');
                     location.href = "mailto:ajtimepyro@gmail.com";
                 }
             )
-            // Github
+            // Instagram
             document.getElementById('instagram').addEventListener('click',
                 function (evt) {
                     open('https://www.instagram.com/ajtimepyro/');
                 }
             )
-            // Github
+            // Facebook
             document.getElementById('facebook').addEventListener('click',
                 function (evt) {
                     open('https://www.facebook.com/abhijeet.gupta.94043626');
                 }
             )
-
-
         };
     }
 );
