@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJTimePyro</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
     <!-- Font including -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&
     display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 
     <!-- Including css file -->
     <link rel="stylesheet" href="css\style.css">
@@ -19,19 +20,22 @@
 </head>
 
 <body class="body">
-    <nav id="container">
+    <nav id="nav-menu">
         <div id="logo">
-            <img src="css\img\ajlogo.png" alt="AJTimePyro">
+            <img src="assets/ajtimepyroLogo.png" alt="AJTimePyro">
         </div>
-        <nav>
-            <div id="box1" class="menu active"><button>Home</button></div>
-            <div id="box2" class="menu"><button>About</button></div>
-            <div id="box3" class="menu"><button>Time Pass</button></div>
-        </nav>
+
+        <div id="main-menu">
+            <div id="home" class="menu active"><a href="/">Home</a></div>
+            <div id="about" class="menu"><a href="/about.html">About</a></div>
+            <div id="game" class="menu"><a href="#">Games</a></div>
+        </div>
     </nav>
+
     <section id="header" class="box4">
         <span>Looking for a Web Developer?</span>
     </section>
+
     <footer id="contact">
         <nav>Contact Us</nav>
     </footer>
