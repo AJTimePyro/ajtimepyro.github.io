@@ -8,8 +8,9 @@
 #nav-menu {
     display: flex;
     padding: 10px;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #023047;
+    align-items: center;
 }
 
 #logo > img {
@@ -22,6 +23,16 @@
     align-items: center;
 }
 
+.main-menu-slide-right {
+    animation: slide-right 0.3s !important;
+}
+
+.main-menu-visible {
+    visibility: visible !important;
+    height: 100% !important;
+    animation: slide-left 0.3s;
+}
+
 .menu {
     cursor: pointer;
 }
@@ -32,4 +43,101 @@
     text-decoration: none;
     font-family: 'Titillium Web';
     font-weight: bold;
+}
+
+#small-screen-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Hamburger Icon */
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    height: 0;
+}
+.menu-icon > .line {
+    background-color: rgb(255, 255, 255);
+    height: 2px;
+    width: 20px;
+    display: block;
+}
+.menu-icon > .line + .line {
+    margin-top: 8px;
+}
+
+.menu-icon .line {
+    transition: transform .3s, opacity 0.3s;
+}
+.menu-icon.animate .line:first-child {
+    transform: translateY(10px) scaleX(1.5) scaleY(1.5) rotate(45deg);
+}
+.menu-icon.animate .line:last-child {
+    transform: translateY(-10px) scaleX(1.5) scaleY(1.5) rotate(-45deg);
+}
+.menu-icon.animate .line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-icon.reverseAnimate .line:first-child {
+    transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg);
+}
+.menu-icon.reverseAnimate .line:last-child {
+    transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg);
+}
+.menu-icon.reverseAnimate .line:nth-child(2) {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+
+    .menu-icon {
+        visibility: visible;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    #logo > img {
+        height: 60px;
+    }
+
+    #nav-menu {
+        display: block;
+    }
+
+    #main-menu {
+        flex-direction: column;
+        gap: 0;
+        visibility: hidden;
+        height: 0;
+    }
+    #main-menu::before {
+        content: "";
+        height: 1px;
+        width: 100vw;
+        background-color: white;
+    }
+}
+
+@keyframes slide-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-right {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
 }
