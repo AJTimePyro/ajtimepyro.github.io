@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+.body {
+    background-color: #126782;
+}
+
 #nav-menu {
     display: flex;
     padding: 10px;
@@ -50,27 +54,6 @@
     text-decoration: none;
     font-family: 'Titillium Web';
     font-weight: bold;
-}
-
-@keyframes menuBorder {
-    0% {
-        border-left-color: var(--borderAnimationColor);
-    }
-    25% {
-        border-top-color: var(--borderAnimationColor);
-    }
-    50% {
-        border-left-color: var(--navBackground);
-        border-right-color: var(--borderAnimationColor);
-    }
-    75% {
-        border-top-color: var(--navBackground);
-        border-bottom-color: var(--borderAnimationColor);
-    }
-    100% {
-        border-right-color: var(--navBackground);
-        border-left-color: var(--borderAnimationColor);
-    }
 }
 
 .menu:hover {
@@ -125,6 +108,34 @@
     transform: scaleX(1);
 }
 
+.container {
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.punch-line {
+    font-family: 'Ubuntu';
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.punch-line div:first-child {
+    font-size: 1.5em;
+    color: #c4fff9;
+}
+.punch-line div:nth-child(2) {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #CCCCCC;
+}
+.punch-line div:last-child {
+    font-size: 2em;
+    font-weight: bold;
+    color: #5ae2db;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
 
@@ -139,7 +150,8 @@
     }
 
     #nav-menu {
-        display: block;
+        flex-direction: column;
+        align-items: normal;
     }
 
     #main-menu {
@@ -153,6 +165,31 @@
         height: 1px;
         width: 100vw;
         background-color: white;
+    }
+
+    .punch-line div:first-child {
+        font-size: 1em !important;
+    }
+    .punch-line div:nth-child(2) {
+        font-size: 2em !important;
+    }
+    .punch-line div:last-child {
+        font-size: 1.5em !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px 50px;
+    }
+    .punch-line div:first-child {
+        font-size: 1.25em;
+    }
+    .punch-line div:nth-child(2) {
+        font-size: 2.25em;
+    }
+    .punch-line div:last-child {
+        font-size: 1.75em;
     }
 }
 
@@ -171,5 +208,26 @@
     }
     to {
         transform: translateX(100%);
+    }
+}
+
+@keyframes menuBorder {
+    0% {
+        border-left-color: var(--borderAnimationColor);
+    }
+    25% {
+        border-top-color: var(--borderAnimationColor);
+    }
+    50% {
+        border-left-color: var(--navBackground);
+        border-right-color: var(--borderAnimationColor);
+    }
+    75% {
+        border-top-color: var(--navBackground);
+        border-bottom-color: var(--borderAnimationColor);
+    }
+    100% {
+        border-right-color: var(--navBackground);
+        border-left-color: var(--borderAnimationColor);
     }
 }
