@@ -49,7 +49,7 @@
 }
 
 .menu > a{
-    color: aliceblue;
+    color: #e9ecef;
     font-size: 1.5em;
     text-decoration: none;
     font-family: 'Titillium Web';
@@ -136,6 +136,35 @@
     color: #5ae2db;
 }
 
+.about-container {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.about-container div:first-child img {
+    height: 400px;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 36px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    padding: 10px;
+}
+.about-card div:first-child {
+    justify-content: center;
+    margin: auto;
+    font: 1.5em 'Anton';
+    color: #d0fffa;
+}
+.about-card div:last-child {
+    text-align: center;
+    font: 1.5em 'Titillium Web';
+    color: #dee2e6;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
 
@@ -176,6 +205,19 @@
     .punch-line div:last-child {
         font-size: 1.5em !important;
     }
+
+    .about-card div:last-child {
+        font-size: 1em !important;
+    }
+    .about-card div:first-child {
+        font-size: 1.25em !important;
+    }
+    .about-container {
+        padding: 0 15px !important;
+    }
+    .about-container div:first-child img {
+        height: 200px !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -190,6 +232,21 @@
     }
     .punch-line div:last-child {
         font-size: 1.75em;
+    }
+
+    .about-container {
+        flex-direction: column;
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 968px) {
+    .about-container div:first-child img {
+        height: 300px;
+    }
+
+    .about-card div:last-child {
+        font-size: 1.25em;
     }
 }
 
