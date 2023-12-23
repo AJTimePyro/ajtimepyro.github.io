@@ -1,4 +1,8 @@
 /* CSS Reset */
+:root {
+    --navBackground : #023047;
+    --borderAnimationColor : #126782
+}
 * {
     margin: 0px;
     padding: 0px;
@@ -8,8 +12,8 @@
 #nav-menu {
     display: flex;
     padding: 10px;
-    justify-content: space-between;
-    background-color: #023047;
+    justify-content: space-around;
+    background-color: var(--navBackground);
     align-items: center;
 }
 
@@ -35,6 +39,9 @@
 
 .menu {
     cursor: pointer;
+    border-radius: 18px;
+    padding: 5px;
+    border: 2px solid var(--navBackground);
 }
 
 .menu > a{
@@ -43,6 +50,31 @@
     text-decoration: none;
     font-family: 'Titillium Web';
     font-weight: bold;
+}
+
+@keyframes menuBorder {
+    0% {
+        border-left-color: var(--borderAnimationColor);
+    }
+    25% {
+        border-top-color: var(--borderAnimationColor);
+    }
+    50% {
+        border-left-color: var(--navBackground);
+        border-right-color: var(--borderAnimationColor);
+    }
+    75% {
+        border-top-color: var(--navBackground);
+        border-bottom-color: var(--borderAnimationColor);
+    }
+    100% {
+        border-right-color: var(--navBackground);
+        border-left-color: var(--borderAnimationColor);
+    }
+}
+
+.menu:hover {
+    animation: menuBorder .65s;
 }
 
 #small-screen-menu {
