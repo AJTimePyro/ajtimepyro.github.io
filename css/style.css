@@ -1,7 +1,9 @@
 /* CSS Reset */
 :root {
     --navBackground : #023047;
-    --borderAnimationColor : #126782
+    --borderAnimationColor : #126782;
+    --head-text-color :  #d0fffa;
+    --head-text-font : 1.5em 'Anton';
 }
 * {
     margin: 0px;
@@ -150,13 +152,18 @@
     width: 100%;
 }
 
-.about-container {
+#about {
+    margin: 50px 0;
+}
+
+.section-container {
     padding: 10px 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.about-container div:first-child img {
+.devImg img {
     height: 400px;
 }
 
@@ -171,8 +178,8 @@
 .about-card div:first-child {
     justify-content: center;
     margin: auto;
-    font: 1.5em 'Anton';
-    color: #d0fffa;
+    font: var(--head-text-font);
+    color: var(--head-text-color);
 }
 .about-card div:last-child {
     text-align: center;
@@ -182,6 +189,44 @@
 .about-card:hover, .about-card:focus {
     transition: 500ms ease-in-out;
     box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(255, 255, 255, 0.22) 0px 15px 12px;
+}
+
+.tech-stack-container {
+    flex-direction: column;
+}
+
+.tech-stack-head {
+    font: var(--head-text-font);
+    color: var(--head-text-color);
+}
+
+.banner-container {
+    overflow: hidden;
+    display: inline-block;
+    margin: 20px 0;
+    height: 100%;
+    width: 100vw;
+    white-space: nowrap;
+    background-color: #ced4da;
+}
+.banner-container::before, .banner-container::after {
+    content: "";
+    display: block;
+    height: 10px;
+    width: 100%;
+    background-color: #212529;
+}
+.logo-banner {
+    display: inline-block;
+    overflow: hidden;
+    animation: bannerMove 5s linear infinite;
+    align-items: center;
+}
+
+.logo-banner img {
+    margin: 0 20px;
+    object-fit: cover;
+    height: 150px;
 }
 
 /* Responsive Design */
@@ -231,11 +276,16 @@
     .about-card div:first-child {
         font-size: 1.25em !important;
     }
-    .about-container {
+    .section-container {
         padding: 0 15px !important;
     }
-    .about-container div:first-child img {
+    .devImg img {
         height: 200px !important;
+    }
+
+    .logo-banner img {
+        height: 100px !important;
+        margin: 0 10px;
     }
 }
 
@@ -253,14 +303,21 @@
         font-size: 1.75em;
     }
 
+    .section-container {
+        padding: 0 50px;
+    }
+
     .about-container {
         flex-direction: column;
-        padding: 0 50px;
+    }
+
+    .logo-banner img {
+        height: 120px;
     }
 }
 
 @media (max-width: 968px) {
-    .about-container div:first-child img {
+    .devImg img {
         height: 300px;
     }
 
@@ -305,5 +362,14 @@
     100% {
         border-right-color: var(--navBackground);
         border-left-color: var(--borderAnimationColor);
+    }
+}
+
+@keyframes bannerMove {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
     }
 }
