@@ -1,16 +1,18 @@
-/* CSS Reset */
 :root {
     --navBackground : #287271;
     --borderAnimationColor : #56cfe1;
     --head-text-color :  #d0fffa;
     --head-text-font : 1.5em 'Anton';
 }
+
+/* CSS Reset */
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+/* Restricting to select any tag */
 .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -24,6 +26,7 @@
     background-color: #343a40;
 }
 
+/* Nav Bar */
 #nav-menu {
     display: flex;
     padding: 10px;
@@ -93,7 +96,6 @@
 .menu-icon > .line + .line {
     margin-top: 8px;
 }
-
 .menu-icon .line {
     transition: transform .3s, opacity 0.3s;
 }
@@ -107,7 +109,6 @@
     opacity: 0;
     transform: scaleX(0);
 }
-
 .menu-icon.reverseAnimate .line:first-child {
     transform: translateY(0) scaleX(1) scaleY(1) rotate(0deg);
 }
@@ -119,6 +120,7 @@
     transform: scaleX(1);
 }
 
+/* For all section container */
 .section-container {
     padding: 10px 20px;
     display: flex;
@@ -126,6 +128,7 @@
     justify-content: center;
 }
 
+/* Intro Section*/
 .intro-container {
     padding: 50px 100px;
 }
@@ -166,6 +169,7 @@
     width: 100%;
 }
 
+/* About Section */
 #about {
     margin: 50px 0;
 }
@@ -198,6 +202,7 @@
     box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(255, 255, 255, 0.22) 0px 15px 12px;
 }
 
+/* Tech Stack section */
 .tech-stack-container {
     flex-direction: column;
 }
@@ -227,6 +232,7 @@
     width: 100%;
     background-color: #212529;
 }
+
 .logo-banner {
     display: inline-block;
     overflow: hidden;
@@ -234,18 +240,22 @@
     align-items: center;
     padding: 0 4px;
 }
-
 .logo-banner img {
     margin: 0 20px;
     object-fit: cover;
     height: 150px;
     background-color: transparent;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
-
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
+    
+    /* Nav Bar */
+    #nav-menu {
+        flex-direction: column;
+        align-items: normal;
+    }
 
     .menu-icon {
         visibility: visible;
@@ -255,11 +265,6 @@
 
     #logo > img {
         height: 60px;
-    }
-
-    #nav-menu {
-        flex-direction: column;
-        align-items: normal;
     }
 
     #main-menu {
@@ -275,6 +280,15 @@
         background-color: white;
     }
 
+    /* For all section container */
+    .section-container {
+        padding: 0 15px !important;
+    }
+
+    /* Intro Section */
+    .intro-container {
+        padding-top: 50px !important;
+    }
     .punch-line {
         text-align: center;
     }
@@ -288,69 +302,53 @@
         font-size: 1.5em !important;
     }
 
+    /* About Section */
     .about-card div:last-child {
         font-size: 1em !important;
     }
     .about-card div:first-child {
         font-size: 1.25em !important;
     }
-    .section-container {
-        padding: 0 15px !important;
-    }
     .devImg img {
         height: 200px !important;
     }
 
+    /* Tech Stack section */
     .logo-banner img {
         height: 100px !important;
         margin: 0 10px;
     }
-
-    .section-container {
-        padding-top: 50px !important;
-    }
 }
 
 @media (max-width: 768px) {
-    .intro-container {
-        padding: 25px 50px;
-    }
-    /* .punch-line div:first-child {
-        font-size: 1em !important;
-    }
-    .punch-line div:nth-child(2) {
-        font-size: 2em !important;
-    }
-    .punch-line div:last-child {
-        font-size: 1.5em !important;
-    } */
 
-    .intro:hover::after {
-        width: 0;
-    }
-
+    /* For all section container */
     .section-container {
         padding: 0 50px;
     }
 
+    /* Intro Section */
+    .intro-container {
+        padding: 25px 50px;
+    }
+    .intro:hover::after {
+        width: 0;
+    }
+
+    /* About Section */
     .about-container {
         flex-direction: column;
     }
 
+    /* Tech Stack section */
     .logo-banner img {
         height: 120px;
     }
 }
 
 @media (max-width: 968px) {
-    .devImg img {
-        height: 300px;
-    }
 
-    .about-card div:last-child {
-        font-size: 1.25em;
-    }
-
+    /* Intro Section */
     .intro-container {
         padding: 50px 50px;
     }
@@ -364,8 +362,19 @@
     .punch-line div:last-child {
         font-size: 1.625em;
     }
+
+    /* About Section */
+    .devImg img {
+        height: 300px;
+    }
+
+    .about-card div:last-child {
+        font-size: 1.25em;
+    }
+
 }
 
+/* Animations */
 @keyframes slide-left {
     from {
         transform: translateX(100%);
