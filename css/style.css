@@ -1,7 +1,7 @@
 /* CSS Reset */
 :root {
-    --navBackground : #023047;
-    --borderAnimationColor : #126782;
+    --navBackground : #287271;
+    --borderAnimationColor : #56cfe1;
     --head-text-color :  #d0fffa;
     --head-text-font : 1.5em 'Anton';
 }
@@ -12,7 +12,7 @@
 }
 
 .body {
-    background-color: #126782;
+    background-color: #343a40;
 }
 
 #nav-menu {
@@ -110,10 +110,15 @@
     transform: scaleX(1);
 }
 
-.container {
-    padding: 50px 100px;
+.section-container {
+    padding: 10px 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
+}
+
+.intro-container {
+    padding: 50px 100px;
 }
 
 .punch-line {
@@ -145,7 +150,7 @@
     display: block;
     height: 2px;
     width: 0;
-    background-color: #343a40;
+    background-color: #006466;
     transition: 400ms;
 }
 .intro:hover::after {
@@ -154,13 +159,6 @@
 
 #about {
     margin: 50px 0;
-}
-
-.section-container {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .devImg img {
@@ -207,12 +205,12 @@
     height: 100%;
     width: 100vw;
     white-space: nowrap;
-    background-color: #ced4da;
+    background-color: #6c757d;
 }
 .banner-container::before, .banner-container::after {
     content: "";
     display: block;
-    height: 10px;
+    height: 5px;
     width: 100%;
     background-color: #212529;
 }
@@ -227,6 +225,9 @@
     margin: 0 20px;
     object-fit: cover;
     height: 150px;
+    background-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
+
 }
 
 /* Responsive Design */
@@ -260,6 +261,9 @@
         background-color: white;
     }
 
+    .punch-line {
+        text-align: center;
+    }
     .punch-line div:first-child {
         font-size: 1em !important;
     }
@@ -287,20 +291,28 @@
         height: 100px !important;
         margin: 0 10px;
     }
+
+    .section-container {
+        padding-top: 50px !important;
+    }
 }
 
 @media (max-width: 768px) {
-    .container {
+    .intro-container {
         padding: 25px 50px;
     }
-    .punch-line div:first-child {
-        font-size: 1.25em;
+    /* .punch-line div:first-child {
+        font-size: 1em !important;
     }
     .punch-line div:nth-child(2) {
-        font-size: 2.25em;
+        font-size: 2em !important;
     }
     .punch-line div:last-child {
-        font-size: 1.75em;
+        font-size: 1.5em !important;
+    } */
+
+    .intro:hover::after {
+        width: 0;
     }
 
     .section-container {
@@ -323,6 +335,20 @@
 
     .about-card div:last-child {
         font-size: 1.25em;
+    }
+
+    .intro-container {
+        padding: 50px 50px;
+    }
+
+    .punch-line div:first-child {
+        font-size: 1.25em;
+    }
+    .punch-line div:nth-child(2) {
+        font-size: 2.25em;
+    }
+    .punch-line div:last-child {
+        font-size: 1.625em;
     }
 }
 
