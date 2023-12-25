@@ -205,12 +205,16 @@
 .tech-stack-head {
     font: var(--head-text-font);
     color: var(--head-text-color);
+    background-color: #212529;
+    border: 20px solid #212529;
+    border-bottom-width: 0px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
 }
 
 .banner-container {
     overflow: hidden;
     display: inline-block;
-    margin: 20px 0;
     height: 100%;
     width: 100vw;
     white-space: nowrap;
@@ -219,7 +223,7 @@
 .banner-container::before, .banner-container::after {
     content: "";
     display: block;
-    height: 5px;
+    height: 10px;
     width: 100%;
     background-color: #212529;
 }
@@ -228,6 +232,7 @@
     overflow: hidden;
     animation: bannerMove 5s linear infinite;
     align-items: center;
+    padding: 0 4px;
 }
 
 .logo-banner img {
