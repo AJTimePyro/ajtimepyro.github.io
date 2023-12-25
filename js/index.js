@@ -27,3 +27,16 @@ menuCloseOpen.addEventListener("click", function(event) {
         this.classList.add(animationForHamIcon);
     }
 });
+
+
+function smoothScrollTo(id) {
+    document.getElementById(id).scrollIntoView(
+        {
+            behavior: "smooth"
+        }
+    );
+}
+function scrollToAbout() {
+    smoothScrollTo("about");
+}
+  
