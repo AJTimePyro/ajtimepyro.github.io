@@ -241,7 +241,8 @@
     padding: 0 4px;
 }
 .logo-banner img {
-    margin: 0 20px;
+    margin: 10px 20px;
+    margin-bottom: 0px;
     object-fit: cover;
     height: 150px;
     background-color: transparent;
@@ -307,7 +308,7 @@
         font-size: 1em !important;
     }
     .about-card div:first-child {
-        font-size: 1.25em !important;
+        font-size: 1.25em;
     }
     .devImg img {
         height: 200px !important;
@@ -316,7 +317,16 @@
     /* Tech Stack section */
     .logo-banner img {
         height: 100px !important;
-        margin: 0 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .tech-stack-head {
+        font-size: 1.25em;
+        border-width: 10px;
+        border-bottom-width: 0px;
+    }
+    .banner-container::before, .banner-container::after {
+        height: 6px;
     }
 }
 
