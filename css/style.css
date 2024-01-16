@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Restricting to select any tag */
 .unselectable {
     -webkit-touch-callout: none;
