@@ -28,7 +28,7 @@ html {
 
 .body {
     background-color: #343a40;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
 }
 
 /* Nav Bar */
@@ -180,7 +180,8 @@ html {
 
 /* About Section */
 #about {
-    margin: 50px 0;
+    margin: 20px 0;
+    overflow-x: hidden;
 }
 
 .devImg img {
@@ -194,6 +195,8 @@ html {
     transition: 500ms ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     padding: 10px;
+    animation: slideBounceLeft linear 1s;
+    margin-bottom: 30px;
 }
 .about-card div:first-child {
     justify-content: center;
@@ -465,5 +468,29 @@ html {
         opacity: 0;
     } to {
         opacity: 1;
+    }
+}
+
+@keyframes slideBounceLeft {
+    0% {
+        transform: translate(40%, -40%);
+    }
+    25% {
+        transform: translate(20%, -20%);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    65% {
+        transform: translateY(10px);
+    }
+    80% {
+        transform: translateY(-10px);
+    }
+    90% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
