@@ -261,6 +261,78 @@ html {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
 }
 
+/* Projects Section */
+#projects {
+    margin: 20px 0;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-heading {
+    font: var(--head-text-font);
+    color: var(--head-text-color);
+}
+
+.projects-box {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-wrap: wrap;
+}
+
+.project-card-container {
+    flex-basis: 50%;
+    padding: 20px;
+}
+
+.project-card {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    border: 10px solid #212529;
+    overflow: hidden;
+}
+
+.project-img {
+    position: relative;
+}
+.project-img > img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.project-description > p {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.project-description:hover{
+    opacity: 1;
+    display: inline;
+}
+
+.project-title {
+    color: white;
+    padding: 5px;
+    font-family: 'Ubuntu';
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
     
