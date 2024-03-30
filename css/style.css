@@ -297,8 +297,13 @@ html {
     overflow: hidden;
 }
 
-.project-img {
+.project-img-container {
     position: relative;
+}
+.project-img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -4px;
 }
 .project-img > img {
     max-width: 100%;
@@ -314,13 +319,19 @@ html {
     height: 100%;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(40, 114, 113, .9);
 }
 .project-description > p {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    font: 1.25em 'Titillium Web';
+    color: white;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 .project-description:hover{
     opacity: 1;
@@ -331,6 +342,7 @@ html {
     color: white;
     padding: 5px;
     font-family: 'Ubuntu';
+    font-size: 1.25rem;
 }
 
 /* Responsive Design */
@@ -415,12 +427,29 @@ html {
         margin-left: 10px;
     }
     .tech-stack-head {
-        font-size: 1.25em;
+        font-size: 1.25em !important;
         border-width: 10px;
         border-bottom-width: 0px;
     }
     .banner-container::before, .banner-container::after {
         height: 6px;
+    }
+
+    /* Projects Section */
+    .project-card-container {
+        padding: 10px 0px !important;
+    }
+
+    .project-description > p {
+        font-size: .8rem !important;
+    }
+
+    .project-title {
+        font-size: .9rem !important;
+    }
+
+    .project-heading {
+        font-size: 1.25rem !important;
     }
 }
 
@@ -447,6 +476,12 @@ html {
     /* Tech Stack section */
     .logo-banner img {
         height: 120px;
+    }
+
+    /* Projects Section */
+    .project-card-container {
+        flex-basis: 100%;
+        padding: 30px 20px;
     }
 }
 
@@ -476,6 +511,18 @@ html {
         font-size: 1.25em;
     }
 
+    /* Projects Section */
+    .project-card-container {
+        padding: 15px 5px;
+    }
+
+    /* .project-title {
+        font-size: 1.25rem;
+    } */
+
+    .project-description > p {
+        font-size: 1rem;
+    }
 }
 
 /* Animations */
