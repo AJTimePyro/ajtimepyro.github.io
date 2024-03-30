@@ -345,6 +345,23 @@ html {
     font-size: 1.25rem;
 }
 
+.project-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 10px;
+    padding-bottom: 5px;
+    font-family: 'Ubuntu';
+}
+.project-links > a {
+    color:var(--borderAnimationColor);
+    text-decoration: none;
+}
+.project-links > a:hover {
+    color: #4ea8de;
+    text-decoration: underline;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
     
@@ -515,10 +532,6 @@ html {
     .project-card-container {
         padding: 15px 5px;
     }
-
-    /* .project-title {
-        font-size: 1.25rem;
-    } */
 
     .project-description > p {
         font-size: 1rem;
