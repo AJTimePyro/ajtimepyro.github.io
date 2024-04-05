@@ -383,12 +383,12 @@ html {
 
     .menu {
         border: none;
-        transition: 300ms;
+        transition: transform 300ms;
         scale: 1;
     }
     .menu:hover, .menu:focus {
         animation: none;
-        scale: 1.2;
+        transform: scale(1.2);
     }
 
     #main-menu {
@@ -396,6 +396,7 @@ html {
         gap: 0;
         visibility: hidden;
         height: 0;
+        animation: none;
     }
     #main-menu::before {
         content: "";
