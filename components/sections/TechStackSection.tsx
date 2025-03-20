@@ -3,18 +3,18 @@ import TechCard from "@/components/ui/TechCard";
 
 export default function TechStackSection() {
     const techStack = [
-        { name: "Python", image: "assets/tech_stack_logo/python.png" },
-        { name: "JavaScript", image: "assets/tech_stack_logo/javascript.png" },
-        { name: "TypeScript", image: "assets/tech_stack_logo/typescript.png" },
-        { name: "ReactJS", image: "assets/tech_stack_logo/reactJS.png" },
-        { name: "NextJS", image: "assets/tech_stack_logo/nextJS.png" },
-        { name: "NodeJS", image: "assets/tech_stack_logo/nodeJS.png" },
-        { name: "ExpressJS", image: "assets/tech_stack_logo/expressJS.png" },
-        { name: "Flask", image: "assets/tech_stack_logo/flask.png" },
-        { name: "TailwindCSS", image: "assets/tech_stack_logo/tailwindCSS.png" },
-        { name: "MongoDB", image: "assets/tech_stack_logo/mongoDB.png" },
-        { name: "MySQL", image: "assets/tech_stack_logo/mySQL.png" },
-        { name: "Linux", image: "assets/tech_stack_logo/linux.png" }
+        { name: "Python", image: "/assets/tech_stack_logo/python.png" },
+        { name: "JavaScript", image: "/assets/tech_stack_logo/javascript.png" },
+        { name: "TypeScript", image: "/assets/tech_stack_logo/typescript.png" },
+        { name: "ReactJS", image: "/assets/tech_stack_logo/reactJS.png" },
+        { name: "NextJS", image: "/assets/tech_stack_logo/nextJS.png" },
+        { name: "NodeJS", image: "/assets/tech_stack_logo/nodeJS.png" },
+        { name: "ExpressJS", image: "/assets/tech_stack_logo/expressJS.png" },
+        { name: "Flask", image: "/assets/tech_stack_logo/flask.png" },
+        { name: "TailwindCSS", image: "/assets/tech_stack_logo/tailwindCSS.png" },
+        { name: "MongoDB", image: "/assets/tech_stack_logo/mongoDB.png" },
+        { name: "MySQL", image: "/assets/tech_stack_logo/mySQL.png" },
+        { name: "Linux", image: "/assets/tech_stack_logo/linux.png" }
     ];
 
     return (
@@ -32,7 +32,7 @@ export default function TechStackSection() {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                    {techStack.map((tech, index) => (
+                    {techStack.map(tech => (
                         <TechCard key={tech.name} tech={tech} />
                     ))}
                 </div>

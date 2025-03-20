@@ -5,14 +5,14 @@ export default function ProjectsSection() {
     const projects = [
         {
             title: "Music X",
-            image: "assets/projects/music-x.png",
+            image: "/assets/projects/music-x.png",
             description: "An Open Source Ads-free music website developed with ReactJS, TailwindCSS, ExpressJS. It retrieves music from YouTube Music by utilizing web scraping techniques to extract data from an unofficial API.",
             repo: "https://github.com/AJTimePyro/music-x",
             live: "https://music-x-gamma.vercel.app/"
         },
         {
             title: "Virtual Meet",
-            image: "assets/projects/virutal-meet.png",
+            image: "/assets/projects/virutal-meet.png",
             description: "Virtual Meet is an open-source web application that allows users to host virtual meetings, similar to platforms like Google Meet or Zoom to provide a seamless and feature-rich virtual meeting experience.",
             repo: "https://github.com/AJTimePyro/VirtualMeet",
             live: "https://virtual-meet-aj.vercel.app/"

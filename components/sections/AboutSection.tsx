@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 export default function AboutSection() {
@@ -8,10 +9,12 @@ export default function AboutSection() {
                     <div className="w-full md:w-2/5 relative group">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg blur-xl opacity-75 group-hover:opacity-100 transition duration-1000"></div>
                         <div className="relative bg-gray-900 rounded-lg p-2 border border-gray-800">
-                            <img
-                                src="assets/developerImg.png"
+                            <Image
+                                src="/assets/developerImg.png"
                                 alt="Abhijeet Gupta"
                                 className="w-full h-auto rounded transform transition-transform duration-500 group-hover:scale-[1.02]"
+                                width={365}
+                                height={365}
                             />
                         </div>
                     </div>
