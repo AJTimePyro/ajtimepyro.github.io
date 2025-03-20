@@ -16,46 +16,46 @@ export default function Navbar({
   scrollToSection
 }: NavbarProps) {
   const navItems = ["home", "about", "tech-stack", "projects"];
-
+  
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-gray-800">
-      <div className="rgb-line absolute bottom-0 left-0 w-full h-0.5"></div>
-
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/90 border-b border-red-900/30">
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-red-900 via-red-700 to-red-900"></div>
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-800 via-red-600 to-red-900 font-serif">
             AJTimePyro
           </h1>
         </div>
-
+        
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           {navItems.map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item)}
-              className={`relative px-1 py-2 uppercase text-sm font-medium transition-colors ${activeSection === item
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-                }`}
+              className={`relative px-1 py-2 uppercase text-sm font-medium transition-colors ${
+                activeSection === item
+                  ? "text-red-500"
+                  : "text-gray-500 hover:text-red-400"
+              }`}
             >
               {item}
               {activeSection === item && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-900 via-red-600 to-red-900" />
               )}
             </button>
           ))}
         </div>
-
+        
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-300 hover:text-white"
+          className="md:hidden text-red-700 hover:text-red-500"
           onClick={toggleMenu}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
-
+      
       {/* Mobile Menu */}
       {isMenuOpen && (
         <MobileMenu
