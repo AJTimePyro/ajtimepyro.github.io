@@ -1,4 +1,3 @@
-import React from "react";
 import TechCard from "@/components/ui/TechCard";
 
 export default function TechStackSection() {
@@ -18,17 +17,17 @@ export default function TechStackSection() {
     ];
 
     return (
-        <section id="tech-stack" className="py-20 bg-gradient-to-b from-black to-gray-900 relative">
-            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(75,85,99,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(75,85,99,0.1)_1px,transparent_1px)]" style={{ backgroundSize: "30px 30px" }}></div>
+        <section id="tech-stack" className="py-20 bg-gradient-to-b from-black to-red-900/50 relative">
+            <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(185,28,28,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(185,28,28,0.1)_1px,transparent_1px)]" style={{ backgroundSize: "30px 30px" }}></div>
 
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold inline-block">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                            My Tech Stack
+                    <h2 className="text-3xl font-bold inline-block font-serif">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-900">
+                            Tools of Darkness
                         </span>
                     </h2>
-                    <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded mt-2 mx-auto"></div>
+                    <div className="h-1 w-24 bg-gradient-to-r from-red-900 to-red-700 rounded mt-2 mx-auto"></div>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">

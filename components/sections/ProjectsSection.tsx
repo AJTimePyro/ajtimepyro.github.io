@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectCard from "@/components/ui/ProjectCard";
 
 export default function ProjectsSection() {
@@ -20,15 +19,17 @@ export default function ProjectsSection() {
     ];
 
     return (
-        <section id="projects" className="py-20 relative">
-            <div className="container mx-auto px-4">
+        <section id="projects" className="py-20 relative bg-black/80">
+            <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,rgba(139,0,0,0.1)_1px,transparent_1px),linear-gradient(135deg,rgba(139,0,0,0.1)_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold inline-block">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                            Projects
+                    <h2 className="text-3xl font-bold inline-block font-serif">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-900">
+                            Cursed Creations
                         </span>
                     </h2>
-                    <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded mt-2 mx-auto"></div>
+                    <div className="h-1 w-24 bg-gradient-to-r from-red-900 to-red-700 rounded mt-2 mx-auto"></div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

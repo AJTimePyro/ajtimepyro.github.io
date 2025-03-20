@@ -19,11 +19,10 @@ export default function MobileMenu({
           <Button
             key={item}
             onClick={() => scrollToSection(item)}
-            className={`block w-full text-left px-2 py-2 uppercase text-sm font-medium transition-colors ${
-              activeSection === item 
-                ? "text-red-500 bg-black/70 border border-red-900/30" 
-                : "text-gray-500 hover:text-red-400 bg-black/50"
-            }`}
+            className={`block w-full text-left px-2 py-2 uppercase text-sm font-medium transition-colors ${activeSection === item
+              ? "text-red-500 bg-black/70 border border-red-900/30"
+              : "text-gray-500 hover:text-red-400 bg-black/50"
+              }`}
           >
             {item}
           </Button>

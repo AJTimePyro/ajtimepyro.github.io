@@ -9,7 +9,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                // Define your custom colors here
+                'blood': '#8B0000',
+                'crimson': '#DC143C',
+                'charcoal': '#101010',
+            },
+            textShadow: {
+                'blood': '0 0 8px #FF0000',
+                'glow': '0 0 5px #FF0000, 0 0 10px #FF0000',
             },
             animation: {
                 'gradient-x': 'gradient-x 3s ease infinite',

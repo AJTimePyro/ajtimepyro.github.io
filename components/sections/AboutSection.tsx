@@ -1,18 +1,23 @@
 import Image from "next/image";
-import React from "react";
 
 export default function AboutSection() {
     return (
-        <section id="about" className="py-20 relative overflow-hidden">
-            <div className="container mx-auto px-4">
+        <section id="about" className="py-20 relative overflow-hidden bg-black/80">
+            <div className="absolute inset-0 grid grid-cols-12 grid-rows-6 z-0">
+                {Array.from({ length: 72 }).map((_, i) => (
+                    <div key={i} className="border-red-900/5 border"></div>
+                ))}
+            </div>
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="flex flex-col md:flex-row items-center gap-12">
                     <div className="w-full md:w-2/5 relative group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg blur-xl opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-                        <div className="relative bg-gray-900 rounded-lg p-2 border border-gray-800">
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-red-800 to-red-700 rounded-lg blur-xl opacity-50 group-hover:opacity-75 transition duration-1000"></div>
+                        <div className="relative bg-black rounded-lg p-2 border border-red-900/30">
                             <Image
                                 src="/assets/developerImg.png"
                                 alt="Abhijeet Gupta"
-                                className="w-full h-auto rounded transform transition-transform duration-500 group-hover:scale-[1.02]"
+                                className="w-full h-auto rounded grayscale brightness-75 contrast-125 transform transition-transform duration-500 group-hover:scale-[1.02] group-hover:grayscale-0"
                                 width={365}
                                 height={365}
                             />
@@ -20,26 +25,25 @@ export default function AboutSection() {
                     </div>
 
                     <div className="w-full md:w-3/5">
-                        <h2 className="text-3xl font-bold mb-8 inline-block">
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                                About Me
+                        <h2 className="text-3xl font-bold mb-8 inline-block font-serif">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-red-900">
+                                The Dark Creator
                             </span>
-                            <div className="h-1 w-1/3 bg-gradient-to-r from-blue-500 to-purple-500 rounded mt-2"></div>
+                            <div className="h-1 w-1/3 bg-gradient-to-r from-red-900 to-red-700 rounded mt-2"></div>
                         </h2>
 
-                        <p className="text-gray-300 text-lg leading-relaxed">
-                            I am a passionate full-stack web developer with expertise in front-end and back-end
-                            development, specializing in frameworks like <span className="text-indigo-400 font-medium">React</span>, <span className="text-indigo-400 font-medium">Next.js</span>, and <span className="text-indigo-400 font-medium">Express.js</span>.
-                            My technical skills include <span className="text-indigo-400 font-medium">TypeScript</span>, <span className="text-indigo-400 font-medium">JavaScript</span>, <span className="text-indigo-400 font-medium">Flask</span>, and databases such
-                            as <span className="text-indigo-400 font-medium">MySQL</span> and <span className="text-indigo-400 font-medium">MongoDB</span>.
+                        <p className="text-gray-400 text-lg leading-relaxed">
+                            I am a sinister architect of digital realms, crafting nightmares with front-end and back-end
+                            sorcery, wielding frameworks like <span className="text-red-500 font-medium">React</span>, <span className="text-red-500 font-medium">Next.js</span>, and <span className="text-red-500 font-medium">Express.js</span>.
+                            My arcane knowledge includes <span className="text-red-500 font-medium">TypeScript</span>, <span className="text-red-500 font-medium">JavaScript</span>, <span className="text-red-500 font-medium">Flask</span>, and forbidden repositories
+                            such as <span className="text-red-500 font-medium">MySQL</span> and <span className="text-red-500 font-medium">MongoDB</span>.
                         </p>
 
-                        <p className="text-gray-300 text-lg leading-relaxed mt-4">
-                            I have developed open-source projects like <span className="text-indigo-400 font-medium">Music X</span>, an ad-free music site utilizing
-                            YouTube Music, and <span className="text-indigo-400 font-medium">Virtual Meet</span>, a platform for virtual meetings. Constantly
-                            expanding my knowledge to stay at the cutting edge of web technologies, I am currently pursuing a
-                            Bachelor of Technology in Computer Science and Engineering, eager to create impactful
-                            digital solutions.
+                        <p className="text-gray-400 text-lg leading-relaxed mt-4">
+                            I have unleashed open-source creations like <span className="text-red-500 font-medium">Music X</span>, a haunting music portal channeling
+                            the essence of YouTube Music, and <span className="text-red-500 font-medium">Virtual Meet</span>, a gateway for spectral gatherings. Endlessly
+                            absorbing knowledge from the digital abyss, I pursue mastery in Computer Science and Engineering,
+                            driven to forge ever more powerful and unsettling digital experiences.
                         </p>
                     </div>
                 </div>

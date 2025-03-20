@@ -16,7 +16,7 @@ export default function Navbar({
   scrollToSection
 }: NavbarProps) {
   const navItems = ["home", "about", "tech-stack", "projects"];
-  
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/90 border-b border-red-900/30">
       <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-red-900 via-red-700 to-red-900"></div>
@@ -26,18 +26,17 @@ export default function Navbar({
             AJTimePyro
           </h1>
         </div>
-        
+
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           {navItems.map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item)}
-              className={`relative px-1 py-2 uppercase text-sm font-medium transition-colors ${
-                activeSection === item
+              className={`relative px-1 py-2 uppercase text-sm font-medium transition-colors ${activeSection === item
                   ? "text-red-500"
                   : "text-gray-500 hover:text-red-400"
-              }`}
+                }`}
             >
               {item}
               {activeSection === item && (
@@ -46,7 +45,7 @@ export default function Navbar({
             </button>
           ))}
         </div>
-        
+
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-red-700 hover:text-red-500"
@@ -55,7 +54,7 @@ export default function Navbar({
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
-      
+
       {/* Mobile Menu */}
       {isMenuOpen && (
         <MobileMenu
