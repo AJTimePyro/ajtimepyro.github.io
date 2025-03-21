@@ -1,21 +1,16 @@
-import React from "react";
 import { Flame, Menu, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 
 interface NavbarProps {
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+  activeSection: string;
   scrollToSection: (sectionId: string) => void;
 }
 
-export default function Navbar({ scrollToSection }: NavbarProps) {
-  const [activeSection, setActiveSection] = React.useState("home");
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+export default function Navbar({ isMenuOpen, toggleMenu, activeSection, scrollToSection }: NavbarProps) {
   const navItems = ["home", "about", "tech-stack", "projects", "contact"];
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   return (
     <header className="p-6 border-b border-red-900 flex justify-between items-center fixed w-screen top-0 backdrop-blur-md bg-black/60 z-50">
@@ -44,10 +39,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
             <Link
               href={`#${item}`}
               key={item}
-              onClick={() => {
-                scrollToSection(item);
-                setActiveSection(item);
-              }}
+              onClick={() => scrollToSection(item)}
               className={`relative px-1 py-2 uppercase text-base font-medium transition-colors ${activeSection === item
                 ? "text-red-500"
                 : "text-gray-500 hover:text-red-400"

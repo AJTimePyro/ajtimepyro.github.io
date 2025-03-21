@@ -10,9 +10,15 @@ import TechStackSection from "@/components/sections/TechStackSection"
 import ProjectsSection from "@/components/sections/ProjectsSection"
 import Footer from "@/components/layout/Footer"
 import ContactSection from "@/components/sections/ContactSection"
+import useScrollSpy from "@/hooks/useScrollSpy"
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
+  const activeSection = useScrollSpy(['home', 'about', 'tech-stack', 'projects', 'contact']);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,7 +45,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-red-500 flex flex-col overflow-x-hidden">
       <BloodDrips />
-      <Navbar scrollToSection={scrollToSection} />
+      <Navbar
+        isMenuOpen={isMenuOpen}
+        toggleMenu={toggleMenu}
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+      />
       <HeroSection scrollToSection={scrollToSection} />
       <AboutSection />
       <TechStackSection />
