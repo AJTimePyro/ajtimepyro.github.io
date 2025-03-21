@@ -1,5 +1,4 @@
 import { Github, ExternalLink } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,6 +7,7 @@ interface ProjectProps {
         title: string;
         image: string;
         description: string;
+        technologies: string[];
         repo: string;
         live: string;
     };
@@ -15,51 +15,47 @@ interface ProjectProps {
 
 export default function ProjectCard({ project }: ProjectProps) {
     return (
-        <div className="group">
-            <Card className="overflow-hidden bg-black hover:bg-gray-900/40 transition-all duration-300 h-full flex flex-col border border-red-900/20 group-hover:border-red-700/40">
-                <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-red-800/20 to-red-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={1366}
-                        height={768}
-                        className="w-full h-64 object-cover object-top transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-125 brightness-75"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+        <div className="group relative">
+            <div className="aspect-video bg-zinc-900 rounded-sm overflow-hidden border border-red-900/50 relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+                <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    width={1366}
+                    height={768}
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-50 group-hover:opacity-30 transition-opacity"
+                />
+
+                <div className="absolute bottom-0 left-0 p-6 z-20">
+                    <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-red-900 font-serif">{project.title}</h3>
+                    <p className="text-gray-400 mb-4 line-clamp-2">{project.description}</p>
+
+                    <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, i) => (
+                            <span key={i} className="text-xs px-2 py-1 bg-red-900/50 text-red-100 rounded-sm">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="p-4">
-                    <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-red-900 font-serif">
-                        {project.title}
-                    </h3>
-                </div>
-
-                <div className="p-4 flex-grow">
-                    <p className="text-gray-400">{project.description}</p>
-                </div>
-
-                <div className="flex gap-4 border-t border-red-900/20 p-4">
+                <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Link
                         href={project.repo}
+                        className="p-2 bg-zinc-800 text-white rounded-full hover:bg-zinc-700 transition-colors"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-black border border-red-900/30 hover:border-red-700 text-gray-400 rounded transition-colors duration-300"
                     >
-                        <Github size={18} className="text-red-700" />
-                        Repository
+                        <Github size={18} />
                     </Link>
                     <Link
                         href={project.live}
+                        className="p-2 bg-red-600 text-white rounded-full hover:bg-red-500 transition-colors"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 text-gray-300 rounded transition-all duration-300"
                     >
                         <ExternalLink size={18} />
-                        Enter Site
                     </Link>
                 </div>
-            </Card>
+            </div>
         </div>
     );
 }

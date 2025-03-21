@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <g fill="none" stroke="#500" stroke-width="1.5">
+    <circle cx="400" cy="400" r="350" />
+    <circle cx="400" cy="400" r="300" />
+    <circle cx="400" cy="400" r="250" />
+    <circle cx="400" cy="400" r="200" />
+    
+    <!-- Pentagram -->
+    <path d="M400 150 L458 350 L670 350 L500 480 L558 680 L400 550 L242 680 L300 480 L130 350 L342 350 Z" />
+    
+    <!-- Runes around the circle -->
+    <g transform="translate(400, 400)">
+      <!-- 12 rune symbols positioned around the circle -->
+      <g transform="rotate(0)">
+        <path d="M0 -325 L0 -375 M-10 -350 L10 -350" />
+      </g>
+      <g transform="rotate(30)">
+        <path d="M0 -325 L-10 -375 M0 -325 L10 -375" />
+      </g>
+      <g transform="rotate(60)">
+        <path d="M0 -325 L0 -375 M-10 -375 L10 -375" />
+      </g>
+      <g transform="rotate(90)">
+        <path d="M-10 -325 L10 -375 M10 -325 L-10 -375" />
+      </g>
+      <g transform="rotate(120)">
+        <path d="M0 -325 L0 -375 M-10 -325 L10 -325" />
+      </g>
+      <g transform="rotate(150)">
+        <path d="M-10 -325 L-10 -375 M10 -325 L10 -375" />
+      </g>
+      <g transform="rotate(180)">
+        <path d="M-10 -325 L10 -375 M-10 -375 L10 -325" />
+      </g>
+      <g transform="rotate(210)">
+        <path d="M0 -350 L-10 -325 L10 -325 Z" />
+      </g>
+      <g transform="rotate(240)">
+        <path d="M0 -350 L-10 -375 L10 -375 Z" />
+      </g>
+      <g transform="rotate(270)">
+        <path d="M-10 -325 L0 -350 L10 -325 L0 -375 Z" />
+      </g>
+      <g transform="rotate(300)">
+        <path d="M-10 -350 L10 -350 M-10 -375 L10 -375" />
+      </g>
+      <g transform="rotate(330)">
+        <path d="M0 -325 L-10 -375 M0 -325 L10 -375 M-10 -350 L10 -350" />
+      </g>
+    </g>
+    
+    <!-- Latin text around inner circle -->
+    <text x="400" y="220" font-family="serif" font-size="12" fill="#500" text-anchor="middle">VOCATIO DAEMONIS</text>
+    <text x="400" y="580" font-family="serif" font-size="12" fill="#500" text-anchor="middle">ANIMA SACRIFICIUM</text>
+  </g>
+</svg>
