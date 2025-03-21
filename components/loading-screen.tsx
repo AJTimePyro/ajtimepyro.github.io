@@ -59,7 +59,7 @@ const LoadingScreen = () => {
   if (!isLoading) return null
 
   return (
-    <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center transition-opacity duration-500">
+    <div className="fixed inset-0 bg-black z-20 flex flex-col items-center justify-center transition-opacity duration-500">
       {/* Pentagram animation */}
       <div className="relative h-20 w-20 mb-8">
         <svg viewBox="0 0 100 100" className="h-full w-full text-red-600 animate-spin-slow">

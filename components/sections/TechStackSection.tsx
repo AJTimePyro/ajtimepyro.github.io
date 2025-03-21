@@ -18,7 +18,7 @@ export default function TechStackSection() {
 
     return (
         <section id="tech-stack" className="py-24 px-6 md:px-12 lg:px-24 bg-black relative overflow-hidden z-20">
-            <div className="absolute inset-0 bg-[url('/occult-pattern.svg')] opacity-5"></div>
+            <div className="absolute inset-0 bg-[url('/occult-pattern.svg')] opacity-70"></div>
 
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-demon mb-16 flex items-center gap-2">

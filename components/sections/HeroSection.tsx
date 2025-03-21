@@ -14,7 +14,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-3xl ml-4 md:ml-12">
-                    <div className="space-y-4 z-50">
+                    <div className="space-y-4 z-20">
                         <h2 className="text-xl md:text-2xl font-light text-gray-500 font-serif">
                             Enter the realm of
                         </h2>

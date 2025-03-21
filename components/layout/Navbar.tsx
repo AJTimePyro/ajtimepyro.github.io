@@ -13,7 +13,7 @@ export default function Navbar({ isMenuOpen, toggleMenu, activeSection, scrollTo
   const navItems = ["home", "about", "tech-stack", "projects", "contact"];
 
   return (
-    <header className="p-6 border-b border-red-900 flex justify-between items-center fixed w-screen top-0 backdrop-blur-md bg-black/60 z-50">
+    <header className="p-6 border-b border-red-900 flex justify-between items-center fixed w-screen top-0 backdrop-blur-md bg-black/60 z-20">
       <div className="rgb-line absolute bottom-0 left-0 w-full h-0.5"></div>
       <div className="flex items-center gap-2">
         <div className="relative h-12 w-12">

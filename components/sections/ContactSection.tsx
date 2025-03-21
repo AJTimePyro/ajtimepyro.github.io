@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function ContactSection() {
     return (
         <section id="contact" className="py-24 px-6 md:px-12 lg:px-24 bg-black relative z-20">
-            <div className="absolute inset-0 bg-[url('/summoning-circle.svg')] bg-center bg-no-repeat opacity-10"></div>
+            <div className="absolute inset-0 bg-[url('/summoning-circle.svg')] bg-center bg-no-repeat opacity-50 -z-20"></div>
 
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-demon mb-16 flex items-center gap-2">
@@ -64,7 +64,7 @@ export default function ContactSection() {
                             <input
                                 type="text"
                                 id="name"
-                                className="w-full bg-zinc-900 border border-red-900/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600"
+                                className="w-full bg-zinc-900 border border-red-900/50 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 z-20"
                                 placeholder="Enter your name"
                             />
                         </div>
