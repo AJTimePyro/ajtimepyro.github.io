@@ -1,6 +1,6 @@
 import { PortfolioData } from '@/types/portfolio';
 
-export const portfolioData: PortfolioData = {
+export const PORTFOLIO_DATA: PortfolioData = {
   profile: {
     name: 'Abhijeet Gupta',
     location: 'New Delhi, India',
