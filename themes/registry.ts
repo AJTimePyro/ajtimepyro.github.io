@@ -4,7 +4,11 @@ import CleanLayout from '@/themes/clean/CleanLayout';
 import HorrorLoading from '@/themes/horror/HorrorLoading';
 import type { PortfolioData } from '@/types/portfolio';
 
-export type ThemeComponent = ComponentType<{ data: PortfolioData }>;
+export interface ThemeProps {
+    data: PortfolioData;
+}
+
+export type ThemeComponent = ComponentType<ThemeProps>;
 
 export interface ThemeMeta {
     id: string;
