@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from "next/navigation";
-import { THEMES, DEFAULT_THEME_ID } from '@/components/themes/registry';
+import { THEMES, DEFAULT_THEME_ID } from '@/themes/registry';
 import { Suspense } from "react";
 import { PORTFOLIO_DATA } from "@/data/resume-data";
 

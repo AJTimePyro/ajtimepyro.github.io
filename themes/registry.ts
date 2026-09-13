@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
-import CleanLayout from '@/components/themes/clean/CleanLayout';
-import HorrorLoading from '@/components/themes/horror/HorrorLoading';
-import { PortfolioData } from '@/types/portfolio';
+import CleanLayout from '@/themes/clean/CleanLayout';
+import HorrorLoading from '@/themes/horror/HorrorLoading';
+import type { PortfolioData } from '@/types/portfolio';
 
 export type ThemeComponent = ComponentType<{ data: PortfolioData }>;
 
@@ -23,7 +23,7 @@ export const THEMES: Record<string, ThemeMeta> = {
     horror: {
         id: 'horror',
         label: 'Horror',
-        component: dynamic(() => import('@/components/themes/horror/HorrorLayout'), {
+        component: dynamic(() => import('@/themes/horror/HorrorLayout'), {
             ssr: false,
             loading: HorrorLoading,
         }),
