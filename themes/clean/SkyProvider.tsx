@@ -1,51 +1,79 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { getSkyTransition, type SkyTransition } from './utils/skyInterpolation';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
+import { getSkyGradientColors, type CurrentSkyState } from "./utils/skyColors";
 
-const SkyContext = createContext<SkyTransition | null>(null);
-
-export function useSky(): SkyTransition {
-    const ctx = useContext(SkyContext);
-    if (!ctx) throw new Error('useSky must be used within a SkyProvider');
-    return ctx;
+export interface SkyContextValue extends CurrentSkyState {
+  tickIntervalSec: number;
+  isInstant: boolean;
 }
 
-export default function SkyProvider({ children }: { children: ReactNode }) {
-    const [sky, setSky] = useState(() => getSkyTransition(new Date()));
+const SkyContext = createContext<SkyContextValue | null>(null);
 
-    useEffect(() => {
-        let timerId: ReturnType<typeof setTimeout>;
+export function useSky(): SkyContextValue {
+  const ctx = useContext(SkyContext);
+  if (!ctx) throw new Error("useSky must be used within a SkyProvider");
+  return ctx;
+}
 
-        function sync() {
-            const transition = getSkyTransition(new Date());
-            setSky(transition);
+interface SkyProviderProps {
+  children: ReactNode;
+  tickIntervalSec?: number;
+}
 
-            // Add 200ms buffer so timer reliably triggers after crossing the segment boundary
-            const delayMs = Math.max(transition.remainingDurationSec * 1000 + 200, 1000);
-            timerId = setTimeout(sync, delayMs);
-        }
+export default function SkyProvider({
+  children,
+  tickIntervalSec = 90,
+}: SkyProviderProps) {
+  const getSnapshot = (isInstant: boolean): SkyContextValue => ({
+    ...getSkyGradientColors(new Date()),
+    tickIntervalSec,
+    isInstant,
+  });
 
-        sync();
+  const [sky, setSky] = useState<SkyContextValue>(() => getSnapshot(true));
 
-        const onVisibilityChange = () => {
-            if (!document.hidden) {
-                clearTimeout(timerId);
-                sync();
-            }
-        };
+  useEffect(() => {
+    let timerId: ReturnType<typeof setTimeout> | undefined;
 
-        document.addEventListener('visibilitychange', onVisibilityChange);
+    function scheduleNextTick() {
+      const now = Date.now();
+      const intervalMs = tickIntervalSec * 1000;
+      const nextBoundaryMs = Math.ceil((now + 100) / intervalMs) * intervalMs;
+      const delayMs = Math.max(100, nextBoundaryMs - now);
 
-        return () => {
-            clearTimeout(timerId);
-            document.removeEventListener('visibilitychange', onVisibilityChange);
-        };
-    }, []);
+      timerId = setTimeout(() => {
+        if (document.hidden) return;
+        setSky(getSnapshot(false));
+        scheduleNextTick();
+      }, delayMs);
+    }
 
-    return (
-        <SkyContext value={sky}>
-            {children}
-        </SkyContext>
-    );
+    scheduleNextTick();
+
+    const onVisibilityChange = () => {
+      clearTimeout(timerId);
+
+      // When refocusing the tab, instantly sync to the current clock time
+      if (!document.hidden) {
+        setSky(getSnapshot(true));
+        scheduleNextTick();
+      }
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      clearTimeout(timerId);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [tickIntervalSec]);
+
+  return <SkyContext.Provider value={sky}>{children}</SkyContext.Provider>;
 }

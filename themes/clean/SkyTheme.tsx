@@ -1,25 +1,55 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, type ReactNode } from 'react';
-import { useSky } from './SkyProvider';
+import { useLayoutEffect, useEffect, type ReactNode } from "react";
+import { useSky } from "./SkyProvider";
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function SkyTheme({ children }: { children: ReactNode }) {
-    const { segment, season } = useSky();
-    const isFirstRender = useRef(true);
+  const { season, segment, topColor, bottomColor, tickIntervalSec, isInstant } =
+    useSky();
 
-    useEffect(() => {
-        const root = document.documentElement;
+  useIsomorphicLayoutEffect(() => {
+    const root = document.documentElement;
 
-        if (isFirstRender.current) {
-            root.style.setProperty('--sky-transition-duration', '0s');
-            isFirstRender.current = false;
-        } else {
-            root.style.setProperty('--sky-transition-duration', '2s');
-        }
+    root.dataset.season = season;
+    root.dataset.segment = segment;
+    root.style.setProperty("--sky-gradient-top", topColor);
+    root.style.setProperty("--sky-gradient-bottom", bottomColor);
 
-        root.dataset.season = season;
-        root.dataset.segment = segment;
-    }, [segment, season]);
+    let rafId: number | undefined;
 
-    return children;
+    if (isInstant) {
+      // Lock in baseline color instantly with 0s transition
+      root.style.setProperty("--sky-transition-duration", "0s");
+      root.style.setProperty("--theme-transition-duration", "0s");
+
+      // Wait until after initial frame is painted before enabling transitions
+      rafId = requestAnimationFrame(() => {
+        rafId = requestAnimationFrame(() => {
+          root.style.setProperty(
+            "--sky-transition-duration",
+            `${tickIntervalSec}s`,
+          );
+          root.style.setProperty("--theme-transition-duration", "0.5s");
+        });
+      });
+    } else {
+      // Regular tick: update target colors and let CSS transition over tick duration
+      root.style.setProperty(
+        "--sky-transition-duration",
+        `${tickIntervalSec}s`,
+      );
+      root.style.setProperty("--theme-transition-duration", "0.5s");
+    }
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      delete root.dataset.season;
+      delete root.dataset.segment;
+    };
+  }, [season, segment, topColor, bottomColor, tickIntervalSec, isInstant]);
+
+  return children;
 }

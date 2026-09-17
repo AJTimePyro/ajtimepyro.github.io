@@ -1,157 +1,576 @@
-@property --sky-bg {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: rgb(15, 20, 22);
+/* Registered Custom Properties */
+@property --sky-gradient-top {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(15, 20, 22);
+}
+
+@property --sky-gradient-bottom {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(25, 30, 38);
 }
 
 @property --sky-text {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: rgb(241, 245, 249);
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(241, 245, 249);
 }
 
 @property --sky-text-muted {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: rgba(241, 245, 249, 0.7);
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(241, 245, 249, 0.7);
+}
+
+@property --card-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(20, 24, 32, 0.95);
+}
+
+@property --card-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(241, 245, 249);
+}
+
+@property --card-text-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(241, 245, 249, 0.72);
+}
+
+/* Root Transitions & Base */
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
-    transition:
-        --sky-bg var(--sky-transition-duration, 0s) ease,
-        --sky-text var(--sky-transition-duration, 0s) ease,
-        --sky-text-muted var(--sky-transition-duration, 0s) ease;
-    color: var(--sky-text);
-    background-color: var(--sky-bg);
+  --sky-transition-duration: 0s;
+  --theme-transition-duration: 0s;
+
+  --card-bg: rgba(20, 24, 32, 0.95);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-text: rgb(241, 245, 249);
+  --card-text-muted: rgba(241, 245, 249, 0.72);
+  --card-chip-bg: rgba(255, 255, 255, 0.06);
+  --card-chip-border: rgba(255, 255, 255, 0.12);
+  --sky-border: rgba(255, 255, 255, 0.15);
+
+  transition:
+    --sky-gradient-top var(--sky-transition-duration, 0s) linear,
+    --sky-gradient-bottom var(--sky-transition-duration, 0s) linear,
+    --sky-text var(--theme-transition-duration, 0s) ease,
+    --sky-text-muted var(--theme-transition-duration, 0s) ease,
+    --card-bg var(--theme-transition-duration, 0s) ease,
+    --card-text var(--theme-transition-duration, 0s) ease,
+    --card-text-muted var(--theme-transition-duration, 0s) ease;
+
+  color: var(--sky-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Segments --- */
+/* Text & UI Contrast */
 :root[data-segment="predawn"] {
-    --sky-bg: var(--color-predawn);
-    --sky-text: var(--text-light);
-    --sky-text-muted: var(--text-light-muted);
+  --sky-text: var(--text-light);
+  --sky-text-muted: var(--text-light-muted);
+  --sky-border: rgba(255, 255, 255, 0.15);
+  --card-bg: rgba(20, 24, 32, 0.95);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-text: var(--text-light);
+  --card-text-muted: var(--text-light-muted);
+  --card-chip-bg: rgba(255, 255, 255, 0.06);
+  --card-chip-border: rgba(255, 255, 255, 0.12);
+  --star-opacity: 0.5;
+  --sun-opacity: 0;
+  --moon-opacity: 0.6;
+  --cloud-night-mult: 0.3;
 }
+
 :root[data-segment="sunrise"] {
-    --sky-bg: var(--color-sunrise);
-    --sky-text: var(--text-dark);
-    --sky-text-muted: var(--text-dark-muted);
+  --sky-text: var(--text-dark);
+  --sky-text-muted: var(--text-dark-muted);
+  --sky-border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(252, 250, 247, 0.96);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: var(--text-dark);
+  --card-text-muted: var(--text-dark-muted);
+  --card-chip-bg: rgba(15, 23, 42, 0.04);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --star-opacity: 0;
+  --sun-opacity: 1;
+  --moon-opacity: 0;
+  --cloud-night-mult: 1;
 }
+
 :root[data-segment="morning"] {
-    --sky-bg: var(--color-morning);
-    --sky-text: var(--text-dark);
-    --sky-text-muted: var(--text-dark-muted);
+  --sky-text: var(--text-dark);
+  --sky-text-muted: var(--text-dark-muted);
+  --sky-border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(252, 250, 247, 0.96);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: var(--text-dark);
+  --card-text-muted: var(--text-dark-muted);
+  --card-chip-bg: rgba(15, 23, 42, 0.04);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --star-opacity: 0;
+  --sun-opacity: 1;
+  --moon-opacity: 0;
+  --cloud-night-mult: 1;
 }
+
 :root[data-segment="noon"] {
-    --sky-bg: var(--color-noon);
-    --sky-text: var(--text-dark);
-    --sky-text-muted: var(--text-dark-muted);
+  --sky-text: var(--text-dark);
+  --sky-text-muted: var(--text-dark-muted);
+  --sky-border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(252, 250, 247, 0.96);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: var(--text-dark);
+  --card-text-muted: var(--text-dark-muted);
+  --card-chip-bg: rgba(15, 23, 42, 0.04);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --star-opacity: 0;
+  --sun-opacity: 1;
+  --moon-opacity: 0;
+  --cloud-night-mult: 1;
 }
+
 :root[data-segment="afternoon"] {
-    --sky-bg: var(--color-afternoon);
-    --sky-text: var(--text-dark);
-    --sky-text-muted: var(--text-dark-muted);
+  --sky-text: var(--text-dark);
+  --sky-text-muted: var(--text-dark-muted);
+  --sky-border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(252, 250, 247, 0.96);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: var(--text-dark);
+  --card-text-muted: var(--text-dark-muted);
+  --card-chip-bg: rgba(15, 23, 42, 0.04);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --star-opacity: 0;
+  --sun-opacity: 1;
+  --moon-opacity: 0;
+  --cloud-night-mult: 1;
 }
+
 :root[data-segment="sunset"] {
-    --sky-bg: var(--color-sunset);
-    --sky-text: var(--text-dark);
-    --sky-text-muted: var(--text-dark-muted);
+  --sky-text: var(--text-dark);
+  --sky-text-muted: var(--text-dark-muted);
+  --sky-border: rgba(0, 0, 0, 0.12);
+  --card-bg: rgba(252, 250, 247, 0.94);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: var(--text-dark);
+  --card-text-muted: var(--text-dark-muted);
+  --card-chip-bg: rgba(15, 23, 42, 0.04);
+  --card-chip-border: rgba(15, 23, 42, 0.1);
+  --star-opacity: 0.1;
+  --sun-opacity: 1;
+  --moon-opacity: 0;
+  --cloud-night-mult: 0.8;
 }
+
 :root[data-segment="dusk"] {
-    --sky-bg: var(--color-dusk);
-    --sky-text: var(--text-light);
-    --sky-text-muted: var(--text-light-muted);
+  --sky-text: var(--text-light);
+  --sky-text-muted: var(--text-light-muted);
+  --sky-border: rgba(255, 255, 255, 0.15);
+  --card-bg: rgba(20, 24, 32, 0.95);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-text: var(--text-light);
+  --card-text-muted: var(--text-light-muted);
+  --card-chip-bg: rgba(255, 255, 255, 0.06);
+  --card-chip-border: rgba(255, 255, 255, 0.12);
+  --star-opacity: 0.4;
+  --sun-opacity: 0;
+  --moon-opacity: 0.3;
+  --cloud-night-mult: 0.5;
 }
+
 :root[data-segment="night"] {
-    --sky-bg: var(--color-night);
-    --sky-text: var(--text-light);
-    --sky-text-muted: var(--text-light-muted);
+  --sky-text: var(--text-light);
+  --sky-text-muted: var(--text-light-muted);
+  --sky-border: rgba(255, 255, 255, 0.15);
+  --card-bg: rgba(20, 24, 32, 0.95);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-text: var(--text-light);
+  --card-text-muted: var(--text-light-muted);
+  --card-chip-bg: rgba(255, 255, 255, 0.06);
+  --card-chip-border: rgba(255, 255, 255, 0.12);
+  --star-opacity: 0.8;
+  --sun-opacity: 0;
+  --moon-opacity: 0.8;
+  --cloud-night-mult: 0.3;
 }
 
-/* --- Seasons --- */
-:root[data-season="winter"], :root {
-    --color-predawn:   rgb(30, 40, 60);
-    --color-sunrise:   rgb(255, 183, 143);
-    --color-morning:   rgb(210, 220, 230);
-    --color-noon:      rgb(200, 210, 220);
-    --color-afternoon: rgb(215, 200, 190);
-    --color-sunset:    rgb(255, 140, 120);
-    --color-dusk:      rgb(90, 70, 90);
-    --color-night:     rgb(20, 30, 48);
+/* Seasonal Gradient Stops & Accents */
+:root[data-season="winter"],
+:root {
+  --grad-predawn-top: rgb(20, 25, 45);
+  --grad-predawn-bottom: rgb(40, 50, 75);
+  --grad-sunrise-top: rgb(255, 170, 120);
+  --grad-sunrise-bottom: rgb(255, 200, 170);
+  --grad-morning-top: rgb(180, 200, 225);
+  --grad-morning-bottom: rgb(215, 225, 235);
+  --grad-noon-top: rgb(170, 195, 220);
+  --grad-noon-bottom: rgb(210, 218, 228);
+  --grad-afternoon-top: rgb(195, 185, 175);
+  --grad-afternoon-bottom: rgb(225, 210, 200);
+  --grad-sunset-top: rgb(255, 120, 90);
+  --grad-sunset-bottom: rgb(255, 160, 140);
+  --grad-dusk-top: rgb(65, 50, 70);
+  --grad-dusk-bottom: rgb(100, 80, 100);
+  --grad-night-top: rgb(10, 15, 30);
+  --grad-night-bottom: rgb(25, 35, 55);
 
-    --text-dark:        rgb(15, 23, 42);
-    --text-dark-muted:  rgba(15, 23, 42, 0.7);
-    --text-light:       rgb(241, 245, 249);
-    --text-light-muted: rgba(241, 245, 249, 0.7);
+  --text-dark: rgb(15, 23, 42);
+  --text-dark-muted: rgba(15, 23, 42, 0.82);
+  --text-light: rgb(241, 245, 249);
+  --text-light-muted: rgba(241, 245, 249, 0.82);
+
+  --accent: rgb(40, 110, 185);
+  --accent-hover: rgb(28, 90, 155);
+
+  --cloud-season-opacity: 0.15;
+  --cloud-color: rgba(255, 255, 255, 0.6);
 }
 
 :root[data-season="spring"] {
-    --color-predawn:   rgb(35, 40, 70);
-    --color-sunrise:   rgb(255, 210, 190);
-    --color-morning:   rgb(200, 225, 250);
-    --color-noon:      rgb(190, 225, 255);
-    --color-afternoon: rgb(210, 220, 240);
-    --color-sunset:    rgb(255, 170, 150);
-    --color-dusk:      rgb(100, 80, 120);
-    --color-night:     rgb(20, 25, 45);
+  --grad-predawn-top: rgb(25, 28, 55);
+  --grad-predawn-bottom: rgb(45, 50, 80);
+  --grad-sunrise-top: rgb(255, 195, 170);
+  --grad-sunrise-bottom: rgb(255, 220, 200);
+  --grad-morning-top: rgb(170, 210, 245);
+  --grad-morning-bottom: rgb(210, 230, 250);
+  --grad-noon-top: rgb(155, 210, 250);
+  --grad-noon-bottom: rgb(200, 230, 255);
+  --grad-afternoon-top: rgb(185, 205, 235);
+  --grad-afternoon-bottom: rgb(215, 225, 245);
+  --grad-sunset-top: rgb(255, 150, 125);
+  --grad-sunset-bottom: rgb(255, 185, 165);
+  --grad-dusk-top: rgb(75, 58, 95);
+  --grad-dusk-bottom: rgb(110, 90, 130);
+  --grad-night-top: rgb(12, 15, 30);
+  --grad-night-bottom: rgb(25, 30, 52);
 
-    --text-dark:        rgb(15, 28, 36);
-    --text-dark-muted:  rgba(15, 28, 36, 0.7);
-    --text-light:       rgb(245, 250, 255);
-    --text-light-muted: rgba(245, 250, 255, 0.7);
+  --text-dark: rgb(15, 28, 36);
+  --text-dark-muted: rgba(15, 28, 36, 0.82);
+  --text-light: rgb(245, 250, 255);
+  --text-light-muted: rgba(245, 250, 255, 0.82);
+
+  --accent: rgb(25, 130, 75);
+  --accent-hover: rgb(18, 105, 60);
+
+  --cloud-season-opacity: 0.25;
+  --cloud-color: rgba(255, 255, 255, 0.65);
 }
 
 :root[data-season="summer"] {
-    --color-predawn:   rgb(45, 40, 40);
-    --color-sunrise:   rgb(255, 200, 140);
-    --color-morning:   rgb(255, 230, 190);
-    --color-noon:      rgb(255, 244, 214);
-    --color-afternoon: rgb(255, 210, 160);
-    --color-sunset:    rgb(255, 100, 60);
-    --color-dusk:      rgb(90, 55, 60);
-    --color-night:     rgb(40, 30, 20);
+  --grad-predawn-top: rgb(35, 28, 28);
+  --grad-predawn-bottom: rgb(55, 45, 45);
+  --grad-sunrise-top: rgb(255, 185, 110);
+  --grad-sunrise-bottom: rgb(255, 215, 160);
+  --grad-morning-top: rgb(245, 220, 170);
+  --grad-morning-bottom: rgb(255, 235, 200);
+  --grad-noon-top: rgb(245, 235, 195);
+  --grad-noon-bottom: rgb(255, 248, 220);
+  --grad-afternoon-top: rgb(245, 200, 140);
+  --grad-afternoon-bottom: rgb(255, 218, 175);
+  --grad-sunset-top: rgb(255, 80, 40);
+  --grad-sunset-bottom: rgb(255, 120, 80);
+  --grad-dusk-top: rgb(70, 40, 42);
+  --grad-dusk-bottom: rgb(100, 62, 68);
+  --grad-night-top: rgb(25, 18, 10);
+  --grad-night-bottom: rgb(48, 35, 25);
 
-    --text-dark:        rgb(36, 26, 20);
-    --text-dark-muted:  rgba(36, 26, 20, 0.7);
-    --text-light:       rgb(255, 248, 240);
-    --text-light-muted: rgba(255, 248, 240, 0.7);
+  --text-dark: rgb(36, 26, 20);
+  --text-dark-muted: rgba(36, 26, 20, 0.82);
+  --text-light: rgb(255, 248, 240);
+  --text-light-muted: rgba(255, 248, 240, 0.82);
+
+  --accent: rgb(185, 85, 10);
+  --accent-hover: rgb(155, 70, 8);
+
+  --cloud-season-opacity: 0.18;
+  --cloud-color: rgba(255, 255, 255, 0.55);
 }
 
 :root[data-season="monsoon"] {
-    --color-predawn:   rgb(30, 35, 40);
-    --color-sunrise:   rgb(150, 160, 160);
-    --color-morning:   rgb(130, 145, 145);
-    --color-noon:      rgb(110, 120, 115);
-    --color-afternoon: rgb(120, 125, 120);
-    --color-sunset:    rgb(140, 110, 100);
-    --color-dusk:      rgb(50, 55, 60);
-    --color-night:     rgb(15, 20, 22);
+  --grad-predawn-top: rgb(22, 26, 32);
+  --grad-predawn-bottom: rgb(35, 40, 48);
+  --grad-sunrise-top: rgb(70, 80, 88);
+  --grad-sunrise-bottom: rgb(85, 96, 104);
+  --grad-morning-top: rgb(52, 64, 72);
+  --grad-morning-bottom: rgb(78, 92, 100);
+  --grad-noon-top: rgb(44, 54, 60);
+  --grad-noon-bottom: rgb(68, 80, 88);
+  --grad-afternoon-top: rgb(48, 58, 66);
+  --grad-afternoon-bottom: rgb(74, 86, 95);
+  --grad-sunset-top: rgb(58, 52, 54);
+  --grad-sunset-bottom: rgb(86, 76, 78);
+  --grad-dusk-top: rgb(35, 38, 42);
+  --grad-dusk-bottom: rgb(58, 62, 68);
+  --grad-night-top: rgb(8, 12, 15);
+  --grad-night-bottom: rgb(20, 25, 30);
 
-    --text-dark:        rgb(18, 24, 28);
-    --text-dark-muted:  rgba(18, 24, 28, 0.7);
-    --text-light:       rgb(238, 244, 248);
-    --text-light-muted: rgba(238, 244, 248, 0.7);
+  --text-dark: rgb(18, 24, 28);
+  --text-dark-muted: rgba(18, 24, 28, 0.82);
+  --text-light: rgb(238, 244, 248);
+  --text-light-muted: rgba(238, 244, 248, 0.82);
+
+  --accent: rgb(16, 126, 118);
+  --accent-hover: rgb(12, 104, 98);
+
+  --cloud-season-opacity: 0.25;
+  --cloud-color: rgba(180, 195, 205, 0.5);
 }
 
 :root[data-season="autumn"] {
-    --color-predawn:   rgb(25, 30, 55);
-    --color-sunrise:   rgb(255, 190, 120);
-    --color-morning:   rgb(180, 215, 250);
-    --color-noon:      rgb(160, 210, 255);
-    --color-afternoon: rgb(200, 200, 230);
-    --color-sunset:    rgb(255, 150, 80);
-    --color-dusk:      rgb(80, 60, 100);
-    --color-night:     rgb(10, 15, 35);
+  --grad-predawn-top: rgb(18, 20, 40);
+  --grad-predawn-bottom: rgb(32, 38, 65);
+  --grad-sunrise-top: rgb(255, 175, 95);
+  --grad-sunrise-bottom: rgb(255, 200, 140);
+  --grad-morning-top: rgb(155, 200, 245);
+  --grad-morning-bottom: rgb(190, 220, 250);
+  --grad-noon-top: rgb(135, 195, 250);
+  --grad-noon-bottom: rgb(175, 215, 255);
+  --grad-afternoon-top: rgb(180, 180, 215);
+  --grad-afternoon-bottom: rgb(210, 208, 238);
+  --grad-sunset-top: rgb(255, 130, 55);
+  --grad-sunset-bottom: rgb(255, 165, 100);
+  --grad-dusk-top: rgb(58, 42, 75);
+  --grad-dusk-bottom: rgb(90, 70, 110);
+  --grad-night-top: rgb(5, 8, 22);
+  --grad-night-bottom: rgb(15, 20, 42);
 
-    --text-dark:        rgb(32, 22, 18);
-    --text-dark-muted:  rgba(32, 22, 18, 0.7);
-    --text-light:       rgb(250, 246, 240);
-    --text-light-muted: rgba(250, 246, 240, 0.7);
+  --text-dark: rgb(32, 22, 18);
+  --text-dark-muted: rgba(32, 22, 18, 0.82);
+  --text-light: rgb(250, 246, 240);
+  --text-light-muted: rgba(250, 246, 240, 0.82);
+
+  --accent: rgb(180, 68, 15);
+  --accent-hover: rgb(150, 55, 10);
+
+  --cloud-season-opacity: 0.28;
+  --cloud-color: rgba(255, 248, 240, 0.55);
 }
 
-/* Overcast daytime monsoon skies have better readability with light text */
+/* Overcast monsoon skies have better readability with light text */
+:root[data-season="monsoon"][data-segment="sunrise"],
 :root[data-season="monsoon"][data-segment="morning"],
 :root[data-season="monsoon"][data-segment="noon"],
-:root[data-season="monsoon"][data-segment="afternoon"] {
-    --sky-text: var(--text-light);
-    --sky-text-muted: var(--text-light-muted);
+:root[data-season="monsoon"][data-segment="afternoon"],
+:root[data-season="monsoon"][data-segment="sunset"] {
+  --sky-text: var(--text-light);
+  --sky-text-muted: var(--text-light-muted);
+  --sky-border: rgba(255, 255, 255, 0.22);
+}
+
+/* Custom CSS Classes */
+.clean-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--card-text);
+  transition: scale 0.2s ease-in-out;
+}
+.clean-card:hover {
+  scale: 1.02;
+}
+
+.clean-chip {
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  color: var(--card-text);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.clean-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.link-accent::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+.link-accent:hover::after {
+  width: 100%;
+}
+.link-accent:hover {
+  color: var(--accent-hover);
+}
+
+.clean-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  background: var(--card-chip-bg);
+  border: 1px solid var(--card-chip-border);
+  color: var(--card-text);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.clean-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  transform: translateY(-1px);
+}
+.clean-action-btn:active {
+  transform: translateY(0);
+}
+
+.clean-action-btn-primary {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--card-chip-border));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+}
+.clean-action-btn-primary:hover {
+  border-color: var(--accent);
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.project-placeholder-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--card-chip-border) 1px,
+    transparent 0
+  );
+  background-size: 16px 16px;
+}
+
+.section-heading-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--sky-border);
+}
+
+.timeline-line::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--sky-border);
+}
+
+/* Responsive */
+@media (max-width: 639px) {
+  .timeline-line::before {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes cloud-drift-1 {
+  0% {
+    transform: translate3d(-2vw, 0, 0);
+  }
+  50% {
+    transform: translate3d(3vw, -2px, 0);
+  }
+  100% {
+    transform: translate3d(-2vw, 0, 0);
+  }
+}
+
+@keyframes cloud-drift-2 {
+  0% {
+    transform: translate3d(2.5vw, 0, 0) scaleX(-1);
+  }
+  50% {
+    transform: translate3d(-2.5vw, 2px, 0) scaleX(-1);
+  }
+  100% {
+    transform: translate3d(2.5vw, 0, 0) scaleX(-1);
+  }
+}
+
+@keyframes cloud-drift-3 {
+  0% {
+    transform: translate3d(-2.5vw, 1px, 0);
+  }
+  50% {
+    transform: translate3d(2vw, -1px, 0);
+  }
+  100% {
+    transform: translate3d(-2.5vw, 1px, 0);
+  }
+}
+
+@keyframes cloud-drift-4 {
+  0% {
+    transform: translate3d(2vw, -1px, 0) scaleX(-1);
+  }
+  50% {
+    transform: translate3d(-2vw, 2px, 0) scaleX(-1);
+  }
+  100% {
+    transform: translate3d(2vw, -1px, 0) scaleX(-1);
+  }
+}
+
+@keyframes cloud-drift-5 {
+  0% {
+    transform: translate3d(-3vw, 1px, 0);
+  }
+  50% {
+    transform: translate3d(2vw, -2px, 0);
+  }
+  100% {
+    transform: translate3d(-3vw, 1px, 0);
+  }
+}
+
+@keyframes star-shimmer {
+  0%,
+  100% {
+    opacity: var(--star-min-op, 0.6);
+    transform: scale(0.88);
+  }
+
+  50% {
+    opacity: var(--star-base-op, 1);
+    transform: scale(1.12);
+  }
+}
+
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
 }

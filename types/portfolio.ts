@@ -16,12 +16,12 @@ export interface Profile {
 }
 
 export type SkillCategory =
-  | 'Languages'
-  | 'Backend'
-  | 'Frontend'
-  | 'DatabaseORM'
-  | 'CloudDevOps'
-  | 'AI';
+  | "Languages"
+  | "Backend"
+  | "Frontend"
+  | "DatabaseORM"
+  | "CloudDevOps"
+  | "AI";
 
 export type Skills = Record<SkillCategory, string[]>;
 
@@ -35,6 +35,18 @@ export interface Experience {
   highlights: string[];
 }
 
+export interface ProjectStat {
+  value: string;
+  label: string;
+}
+
+export interface ProjectMedia {
+  type: "image" | "video";
+  url: string;
+  alt?: string;
+  poster?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -44,6 +56,8 @@ export interface Project {
   repoUrl: string;
   liveUrl?: string;
   featured?: boolean;
+  media?: ProjectMedia[];
+  stats?: ProjectStat[];
 }
 
 export interface Education {
