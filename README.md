@@ -7,7 +7,7 @@
 
 Portfolio website for Abhijeet Gupta (AJTimePyro).
 
-The interface updates its background, lighting, and color contrast in real time based on the local time of day, season, and calculated solar and lunar positions.
+The interface updates its background, lighting, and color contrast in real time based on the local time of day, season, and calculated solar and lunar positions (calibrated for Delhi and nearby regions).
 
 ---
 
@@ -45,6 +45,8 @@ The day is divided into eight segments based on calculated sunrise and sunset ti
 The sky colors also shift across five seasonal palettes: winter, spring, summer, monsoon, and autumn. During monsoon season, the sky shifts to overcast slate tones, and typography switches to light text for higher contrast.
 
 Colors transition smoothly between segments using RGB linear interpolation (`lerpColor`) evaluated every 90 seconds, combined with CSS `@property` transitions to avoid abrupt color snaps.
+ 
+Note: Solar calculations (sunrise, sunset, and day progress) and seasonal cycles are calibrated for Delhi and nearby regions.
 
 ---
 
