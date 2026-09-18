@@ -130,9 +130,11 @@ function generateClouds(
 }
 
 export default function CloudLayer({ count }: { count?: number }) {
-  const { season } = useSky();
+  const { season, currentDate } = useSky();
   const [clouds, setClouds] = useState<Cloud[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const daySeed = getDaySeed(currentDate);
 
   useEffect(() => {
     const onScroll = () => {
@@ -153,13 +155,11 @@ export default function CloudLayer({ count }: { count?: number }) {
   }, []);
 
   useEffect(() => {
-    const now = new Date();
     const w = window.innerWidth;
-    const seed = getDaySeed(now);
-    const sec = getSecondsIntoDay(now);
+    const sec = getSecondsIntoDay(currentDate);
     const cloudCount = getCloudCount(season, w, count);
-    setClouds(generateClouds(seed, cloudCount, sec, w));
-  }, [season, count]);
+    setClouds(generateClouds(daySeed, cloudCount, sec, w));
+  }, [season, count, daySeed]);
 
   if (clouds.length === 0) return null;
 

@@ -21,20 +21,9 @@ export default function SkyTheme({ children }: { children: ReactNode }) {
     let rafId: number | undefined;
 
     if (isInstant) {
-      // Lock in baseline color instantly with 0s transition
+      // Instant switch for fast-forwarding, scrubbing, and initial paint
       root.style.setProperty("--sky-transition-duration", "0s");
       root.style.setProperty("--theme-transition-duration", "0s");
-
-      // Wait until after initial frame is painted before enabling transitions
-      rafId = requestAnimationFrame(() => {
-        rafId = requestAnimationFrame(() => {
-          root.style.setProperty(
-            "--sky-transition-duration",
-            `${tickIntervalSec}s`,
-          );
-          root.style.setProperty("--theme-transition-duration", "0.5s");
-        });
-      });
     } else {
       // Regular tick: update target colors and let CSS transition over tick duration
       root.style.setProperty(

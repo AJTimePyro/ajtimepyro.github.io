@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
+import { useSky } from "../../SkyProvider";
 import { getNightSeed, mulberry32 } from "../../utils/skySeed";
 
 interface StarStyle extends CSSProperties {
@@ -79,11 +80,13 @@ function generateStars(seed: number, count = 85): Star[] {
 }
 
 export default function StarField() {
+  const { currentDate } = useSky();
   const [stars, setStars] = useState<Star[]>([]);
+  const nightSeed = getNightSeed(currentDate);
 
   useEffect(() => {
-    setStars(generateStars(getNightSeed(new Date())));
-  }, []);
+    setStars(generateStars(nightSeed));
+  }, [nightSeed]);
 
   return (
     <div

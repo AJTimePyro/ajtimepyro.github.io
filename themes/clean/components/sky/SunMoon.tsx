@@ -30,8 +30,14 @@ export default function SunMoon() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const { progress, segment, dayFraction, tickIntervalSec, isInstant } =
-    useSky();
+  const {
+    progress,
+    segment,
+    dayFraction,
+    tickIntervalSec,
+    isInstant,
+    currentDate,
+  } = useSky();
 
   if (!mounted) {
     return (
@@ -48,7 +54,12 @@ export default function SunMoon() {
   const moveDuration = isInstant ? 0 : tickIntervalSec;
   const moveTransition = `left ${moveDuration}s linear, top ${moveDuration}s linear, opacity 2s ease`;
 
-  const { Icon: MoonIcon, name: moonName, illumination } = getMoonPhase();
+  const {
+    Icon: MoonIcon,
+    name: moonName,
+    illumination,
+  } = getMoonPhase(currentDate);
+  const isMoonVisible = moonName !== "New Moon";
 
   return (
     <div
@@ -96,38 +107,42 @@ export default function SunMoon() {
       {/* ── Moon ── */}
       <div
         className="transition-opacity duration-[2s]"
-        style={{ opacity: "var(--moon-opacity, 0)" }}
+        style={{ opacity: isMoonVisible ? "var(--moon-opacity, 0)" : 0 }}
       >
-        {/* Lunar halo */}
-        <div
-          className="absolute rounded-full blur-[25px]"
-          style={{
-            left: `${moon.x}%`,
-            top: `${moon.y}%`,
-            width: "clamp(80px, 12vw, 150px)",
-            height: "clamp(80px, 12vw, 150px)",
-            transform: "translate(-50%, -50%)",
-            background:
-              "radial-gradient(circle, rgba(194, 213, 240, 0.25) 0%, rgba(159, 181, 223, 0.1) 50%, transparent 70%)",
-            opacity: Math.max(0.15, illumination),
-            transition: moveTransition,
-          }}
-        />
+        {isMoonVisible && (
+          <>
+            {/* Lunar halo */}
+            <div
+              className="absolute rounded-full blur-[25px]"
+              style={{
+                left: `${moon.x}%`,
+                top: `${moon.y}%`,
+                width: "clamp(80px, 12vw, 150px)",
+                height: "clamp(80px, 12vw, 150px)",
+                transform: "translate(-50%, -50%)",
+                background:
+                  "radial-gradient(circle, rgba(194, 213, 240, 0.25) 0%, rgba(159, 181, 223, 0.1) 50%, transparent 70%)",
+                opacity: illumination * 0.35,
+                transition: moveTransition,
+              }}
+            />
 
-        {/* Lunar phase icon */}
-        <MoonIcon
-          className="absolute text-[rgb(218,222,231)] pointer-events-none"
-          style={{
-            left: `${moon.x}%`,
-            top: `${moon.y}%`,
-            width: "clamp(30px, 4.2vw, 50px)",
-            height: "clamp(30px, 4.2vw, 50px)",
-            transform: "translate(-50%, -50%)",
-            filter: `drop-shadow(0 0 ${Math.round(3 + illumination * 7)}px rgba(194, 213, 240, ${(0.25 + illumination * 0.45).toFixed(2)}))`,
-            transition: moveTransition,
-          }}
-          aria-label={`Moon: ${moonName} (${Math.round(illumination * 100)}% illuminated)`}
-        />
+            {/* Lunar phase icon */}
+            <MoonIcon
+              className="absolute text-[rgb(218,222,231)] pointer-events-none"
+              style={{
+                left: `${moon.x}%`,
+                top: `${moon.y}%`,
+                width: "clamp(30px, 4.2vw, 50px)",
+                height: "clamp(30px, 4.2vw, 50px)",
+                transform: "translate(-50%, -50%)",
+                filter: `drop-shadow(0 0 ${Math.round(3 + illumination * 7)}px rgba(194, 213, 240, ${(0.25 + illumination * 0.45).toFixed(2)}))`,
+                transition: moveTransition,
+              }}
+              aria-label={`Moon: ${moonName} (${Math.round(illumination * 100)}% illuminated)`}
+            />
+          </>
+        )}
       </div>
     </div>
   );

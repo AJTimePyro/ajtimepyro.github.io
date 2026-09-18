@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -9,9 +10,15 @@ import {
 } from "react";
 import { getSkyGradientColors, type CurrentSkyState } from "./utils/skyColors";
 
+export type TimeOverrideAction = Date | null | ((prev: Date) => Date | null);
+
 export interface SkyContextValue extends CurrentSkyState {
-  tickIntervalSec: number;
+  currentDate: Date;
+  isSimulated: boolean;
   isInstant: boolean;
+  tickIntervalSec: number;
+  setTimeOverride: (update: TimeOverrideAction) => void;
+  resetToRealTime: () => void;
 }
 
 const SkyContext = createContext<SkyContextValue | null>(null);
@@ -31,49 +38,66 @@ export default function SkyProvider({
   children,
   tickIntervalSec = 90,
 }: SkyProviderProps) {
-  const getSnapshot = (isInstant: boolean): SkyContextValue => ({
-    ...getSkyGradientColors(new Date()),
-    tickIntervalSec,
-    isInstant,
-  });
+  const [overrideDate, setOverrideDate] = useState<Date | null>(null);
+  const [liveDate, setLiveDate] = useState<Date>(() => new Date());
+  const [isInstant, setIsInstant] = useState(true);
 
-  const [sky, setSky] = useState<SkyContextValue>(() => getSnapshot(true));
+  const currentDate = overrideDate ?? liveDate;
+  const skyState = getSkyGradientColors(currentDate);
 
   useEffect(() => {
-    let timerId: ReturnType<typeof setTimeout> | undefined;
+    const t = setTimeout(() => setIsInstant(false), 100);
+    return () => clearTimeout(t);
+  }, []);
 
-    function scheduleNextTick() {
-      const now = Date.now();
-      const intervalMs = tickIntervalSec * 1000;
-      const nextBoundaryMs = Math.ceil((now + 100) / intervalMs) * intervalMs;
-      const delayMs = Math.max(100, nextBoundaryMs - now);
+  useEffect(() => {
+    if (overrideDate) return;
 
-      timerId = setTimeout(() => {
-        if (document.hidden) return;
-        setSky(getSnapshot(false));
-        scheduleNextTick();
-      }, delayMs);
-    }
+    const intervalMs = tickIntervalSec * 1000;
+    const now = Date.now();
+    const delay = Math.max(
+      100,
+      Math.ceil((now + 100) / intervalMs) * intervalMs - now,
+    );
 
-    scheduleNextTick();
-
-    const onVisibilityChange = () => {
-      clearTimeout(timerId);
-
-      // When refocusing the tab, instantly sync to the current clock time
-      if (!document.hidden) {
-        setSky(getSnapshot(true));
-        scheduleNextTick();
-      }
+    const timer = setTimeout(() => setLiveDate(new Date()), delay);
+    const onVisibility = () => {
+      if (!document.hidden) setLiveDate(new Date());
     };
 
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
+    document.addEventListener("visibilitychange", onVisibility);
     return () => {
-      clearTimeout(timerId);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [tickIntervalSec]);
+  }, [overrideDate, liveDate, tickIntervalSec]);
 
-  return <SkyContext.Provider value={sky}>{children}</SkyContext.Provider>;
+  const setTimeOverride = useCallback((update: TimeOverrideAction) => {
+    setIsInstant(true);
+    setOverrideDate((prev) => {
+      if (typeof update === "function") {
+        return update(prev ?? new Date());
+      }
+      return update;
+    });
+  }, []);
+
+  const resetToRealTime = useCallback(() => {
+    setIsInstant(true);
+    setOverrideDate(null);
+    setLiveDate(new Date());
+    setTimeout(() => setIsInstant(false), 150);
+  }, []);
+
+  const value: SkyContextValue = {
+    ...skyState,
+    currentDate,
+    isSimulated: overrideDate !== null,
+    isInstant,
+    tickIntervalSec,
+    setTimeOverride,
+    resetToRealTime,
+  };
+
+  return <SkyContext.Provider value={value}>{children}</SkyContext.Provider>;
 }
