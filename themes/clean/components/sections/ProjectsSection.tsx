@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -78,7 +79,6 @@ function ProjectMediaArea({
             key={media.url}
             src={media.url}
             poster={media.poster}
-            autoPlay
             loop
             muted
             playsInline
@@ -129,24 +129,28 @@ function ProjectMediaArea({
         )}
       </div>
 
-      {isZoomed && !isVideo && (
-        <div
-          onClick={() => setIsZoomed(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-xs cursor-zoom-out"
-        >
-          <div className="relative w-full h-full max-w-7xl max-h-[90vh]">
-            <Image
-              src={media.url}
-              alt={media.alt || project.title}
-              fill
-              unoptimized={media.url.endsWith(".svg")}
-              className="object-contain"
-              sizes="100vw"
-              priority
-            />
-          </div>
-        </div>
-      )}
+      {isZoomed &&
+        !isVideo &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-xs cursor-zoom-out"
+          >
+            <div className="relative w-full h-full max-w-7xl max-h-[90vh]">
+              <Image
+                src={media.url}
+                alt={media.alt || project.title}
+                fill
+                unoptimized={media.url.endsWith(".svg")}
+                className="object-contain"
+                sizes="100vw"
+                priority
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

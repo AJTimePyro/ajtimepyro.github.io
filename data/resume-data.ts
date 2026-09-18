@@ -101,6 +101,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
           type: "video",
           url: "https://github.com/user-attachments/assets/2cc3c7d4-ff4e-497a-9ff2-2bed5ca1a48b",
           alt: "ApplyLint LangGraph Evaluation Pipeline and SSE Stream",
+          poster: "/projects/apply-lint-1.png"
         },
       ],
       description:
@@ -148,6 +149,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
       slug: "ajbotverse",
       title: "AJBotVerse",
       tagline: "Suite of cloud downloader, uploader, and utility Telegram bots",
+      media: [
+        {
+          type: "image",
+          url: "/projects/ajbotverse-1.png",
+          alt: "Telegram Bots",
+        },
+      ],
       description:
         "Suite of high-throughput Telegram automation bots for cloud storage transfers, direct links, and utility workflows built with Pyrogram and MongoDB.",
       stats: [
