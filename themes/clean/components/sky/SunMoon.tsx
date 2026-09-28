@@ -50,6 +50,14 @@ export default function SunMoon() {
 
   const sun = getSunCoordinates(progress, dayFraction);
   const moon = getMoonCoordinates(progress, dayFraction);
+  const isSunTime =
+    segment === "sunrise" ||
+    segment === "morning" ||
+    segment === "noon" ||
+    segment === "afternoon" ||
+    segment === "sunset";
+  const isNightTime =
+    segment === "dusk" || segment === "night" || segment === "predawn";
   const isGoldenHour = segment === "sunrise" || segment === "sunset";
   const moveDuration = isInstant ? 0 : tickIntervalSec;
   const moveTransition = `left ${moveDuration}s linear, top ${moveDuration}s linear, opacity 2s ease`;
@@ -69,7 +77,7 @@ export default function SunMoon() {
       {/* ── Sun ── */}
       <div
         className="transition-opacity duration-[2s]"
-        style={{ opacity: "var(--sun-opacity, 0)" }}
+        style={{ opacity: isSunTime ? "var(--sun-opacity, 1)" : 0 }}
       >
         {/* Outer corona */}
         <div
@@ -107,7 +115,9 @@ export default function SunMoon() {
       {/* ── Moon ── */}
       <div
         className="transition-opacity duration-[2s]"
-        style={{ opacity: isMoonVisible ? "var(--moon-opacity, 0)" : 0 }}
+        style={{
+          opacity: isMoonVisible && isNightTime ? "var(--moon-opacity, 0)" : 0,
+        }}
       >
         {isMoonVisible && (
           <>

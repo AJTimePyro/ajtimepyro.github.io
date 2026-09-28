@@ -84,7 +84,6 @@ html {
   --card-chip-bg: rgba(255, 255, 255, 0.06);
   --card-chip-border: rgba(255, 255, 255, 0.12);
   --star-opacity: 0.5;
-  --sun-opacity: 0;
   --moon-opacity: 0.6;
   --cloud-night-mult: 0.3;
 }
@@ -99,9 +98,6 @@ html {
   --card-text-muted: var(--text-dark-muted);
   --card-chip-bg: rgba(15, 23, 42, 0.04);
   --card-chip-border: rgba(15, 23, 42, 0.1);
-  --star-opacity: 0;
-  --sun-opacity: 1;
-  --moon-opacity: 0;
   --cloud-night-mult: 1;
 }
 
@@ -115,9 +111,6 @@ html {
   --card-text-muted: var(--text-dark-muted);
   --card-chip-bg: rgba(15, 23, 42, 0.04);
   --card-chip-border: rgba(15, 23, 42, 0.1);
-  --star-opacity: 0;
-  --sun-opacity: 1;
-  --moon-opacity: 0;
   --cloud-night-mult: 1;
 }
 
@@ -131,9 +124,6 @@ html {
   --card-text-muted: var(--text-dark-muted);
   --card-chip-bg: rgba(15, 23, 42, 0.04);
   --card-chip-border: rgba(15, 23, 42, 0.1);
-  --star-opacity: 0;
-  --sun-opacity: 1;
-  --moon-opacity: 0;
   --cloud-night-mult: 1;
 }
 
@@ -147,9 +137,6 @@ html {
   --card-text-muted: var(--text-dark-muted);
   --card-chip-bg: rgba(15, 23, 42, 0.04);
   --card-chip-border: rgba(15, 23, 42, 0.1);
-  --star-opacity: 0;
-  --sun-opacity: 1;
-  --moon-opacity: 0;
   --cloud-night-mult: 1;
 }
 
@@ -164,8 +151,6 @@ html {
   --card-chip-bg: rgba(15, 23, 42, 0.04);
   --card-chip-border: rgba(15, 23, 42, 0.1);
   --star-opacity: 0.1;
-  --sun-opacity: 1;
-  --moon-opacity: 0;
   --cloud-night-mult: 0.8;
 }
 
@@ -180,7 +165,6 @@ html {
   --card-chip-bg: rgba(255, 255, 255, 0.06);
   --card-chip-border: rgba(255, 255, 255, 0.12);
   --star-opacity: 0.4;
-  --sun-opacity: 0;
   --moon-opacity: 0.3;
   --cloud-night-mult: 0.5;
 }
@@ -196,7 +180,6 @@ html {
   --card-chip-bg: rgba(255, 255, 255, 0.06);
   --card-chip-border: rgba(255, 255, 255, 0.12);
   --star-opacity: 0.8;
-  --sun-opacity: 0;
   --moon-opacity: 0.8;
   --cloud-night-mult: 0.3;
 }
@@ -323,8 +306,6 @@ html {
   --cloud-color: rgba(180, 195, 205, 0.5);
 
   --sun-opacity: 0.12;
-  --moon-opacity: 0.12;
-  --star-opacity: 0;
 
   --monsoon-cloud-dark: #0c1820;
   --monsoon-cloud-mid: #14222c;
@@ -348,6 +329,7 @@ html {
   --monsoon-cloud-light: #182230;
   --monsoon-rain-color: rgba(138, 165, 198, 0.44);
   --moon-opacity: 0.08;
+  --star-opacity: 0.15;
 }
 
 :root[data-season="monsoon"][data-segment="sunrise"] {
@@ -370,7 +352,8 @@ html {
   --monsoon-cloud-mid: #111820;
   --monsoon-cloud-light: #18222c;
   --monsoon-rain-color: rgba(172, 198, 224, 0.55);
-  --moon-opacity: 0.08;
+  --moon-opacity: 0.06;
+  --star-opacity: 0.12;
 }
 
 :root[data-season="monsoon"][data-segment="night"] {
@@ -378,6 +361,8 @@ html {
   --monsoon-cloud-mid: #06090c;
   --monsoon-cloud-light: #0a0e13;
   --monsoon-rain-color: rgba(130, 150, 175, 0.35);
+  --moon-opacity: 0.12;
+  --star-opacity: 0.22;
 }
 
 :root[data-season="autumn"] {

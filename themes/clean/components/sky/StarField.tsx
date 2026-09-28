@@ -80,7 +80,7 @@ function generateStars(seed: number, count = 85): Star[] {
 }
 
 export default function StarField() {
-  const { currentDate } = useSky();
+  const { currentDate, segment } = useSky();
   const [stars, setStars] = useState<Star[]>([]);
   const nightSeed = getNightSeed(currentDate);
 
@@ -88,11 +88,17 @@ export default function StarField() {
     setStars(generateStars(nightSeed));
   }, [nightSeed]);
 
+  const isStarTime =
+    segment === "sunset" ||
+    segment === "dusk" ||
+    segment === "night" ||
+    segment === "predawn";
+
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden z-1 transition-opacity duration-[3s] ease-in-out"
       aria-hidden="true"
-      style={{ opacity: "var(--star-opacity, 0)" }}
+      style={{ opacity: isStarTime ? "var(--star-opacity, 0)" : 0 }}
     >
       {stars.map((star) => (
         <div
