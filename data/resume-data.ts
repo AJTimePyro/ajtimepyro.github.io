@@ -99,9 +99,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
       media: [
         {
           type: "video",
-          url: "https://github.com/user-attachments/assets/2cc3c7d4-ff4e-497a-9ff2-2bed5ca1a48b",
+          url: "https://github.com/user-attachments/assets/e6c3081e-2cbe-49fa-8d9b-0343e5c1fe03",
           alt: "ApplyLint LangGraph Evaluation Pipeline and SSE Stream",
-          poster: "/projects/apply-lint-1.png"
+          poster: "/projects/apply-lint-1.png",
         },
       ],
       description:
