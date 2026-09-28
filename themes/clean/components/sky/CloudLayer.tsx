@@ -166,7 +166,7 @@ export default function CloudLayer({ count }: { count?: number }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none overflow-hidden z-2"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-3"
       aria-hidden="true"
       style={{
         WebkitMaskImage:

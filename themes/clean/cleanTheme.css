@@ -321,6 +321,63 @@ html {
 
   --cloud-season-opacity: 0.25;
   --cloud-color: rgba(180, 195, 205, 0.5);
+
+  --sun-opacity: 0.12;
+  --moon-opacity: 0.12;
+  --star-opacity: 0;
+
+  --monsoon-cloud-dark: #0c1820;
+  --monsoon-cloud-mid: #14222c;
+  --monsoon-cloud-light: #1c2e3a;
+  --monsoon-rain-color: rgba(200, 220, 240, 0.65);
+}
+
+:root[data-season="monsoon"][data-segment="sunrise"],
+:root[data-season="monsoon"][data-segment="morning"],
+:root[data-season="monsoon"][data-segment="noon"],
+:root[data-season="monsoon"][data-segment="afternoon"],
+:root[data-season="monsoon"][data-segment="sunset"] {
+  --sky-text: var(--text-light);
+  --sky-text-muted: var(--text-light-muted);
+  --sky-border: rgba(255, 255, 255, 0.22);
+}
+
+:root[data-season="monsoon"][data-segment="predawn"] {
+  --monsoon-cloud-dark: #090f18;
+  --monsoon-cloud-mid: #101820;
+  --monsoon-cloud-light: #182230;
+  --monsoon-rain-color: rgba(138, 165, 198, 0.44);
+  --moon-opacity: 0.08;
+}
+
+:root[data-season="monsoon"][data-segment="sunrise"] {
+  --monsoon-cloud-dark: #18262e;
+  --monsoon-cloud-mid: #22323e;
+  --monsoon-cloud-light: #2c3f4e;
+  --sun-opacity: 0.06;
+}
+
+:root[data-season="monsoon"][data-segment="sunset"] {
+  --monsoon-cloud-dark: #1c1418;
+  --monsoon-cloud-mid: #261e26;
+  --monsoon-cloud-light: #322a34;
+  --monsoon-rain-color: rgba(208, 192, 210, 0.6);
+  --sun-opacity: 0.06;
+}
+
+:root[data-season="monsoon"][data-segment="dusk"] {
+  --monsoon-cloud-dark: #0a0e14;
+  --monsoon-cloud-mid: #111820;
+  --monsoon-cloud-light: #18222c;
+  --monsoon-rain-color: rgba(172, 198, 224, 0.55);
+  --moon-opacity: 0.08;
+}
+
+:root[data-season="monsoon"][data-segment="night"] {
+  --monsoon-cloud-dark: #030507;
+  --monsoon-cloud-mid: #06090c;
+  --monsoon-cloud-light: #0a0e13;
+  --monsoon-rain-color: rgba(130, 150, 175, 0.35);
 }
 
 :root[data-season="autumn"] {
@@ -351,17 +408,6 @@ html {
 
   --cloud-season-opacity: 0.28;
   --cloud-color: rgba(255, 248, 240, 0.55);
-}
-
-/* Overcast monsoon skies have better readability with light text */
-:root[data-season="monsoon"][data-segment="sunrise"],
-:root[data-season="monsoon"][data-segment="morning"],
-:root[data-season="monsoon"][data-segment="noon"],
-:root[data-season="monsoon"][data-segment="afternoon"],
-:root[data-season="monsoon"][data-segment="sunset"] {
-  --sky-text: var(--text-light);
-  --sky-text-muted: var(--text-light-muted);
-  --sky-border: rgba(255, 255, 255, 0.22);
 }
 
 /* Custom CSS Classes */

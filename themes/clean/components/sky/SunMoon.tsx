@@ -42,7 +42,7 @@ export default function SunMoon() {
   if (!mounted) {
     return (
       <div
-        className="fixed inset-0 pointer-events-none overflow-hidden z-3"
+        className="fixed inset-0 pointer-events-none overflow-hidden z-1"
         aria-hidden="true"
       />
     );
@@ -63,7 +63,7 @@ export default function SunMoon() {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none overflow-hidden z-3"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-1"
       aria-hidden="true"
     >
       {/* ── Sun ── */}
