@@ -166,6 +166,66 @@ export const PORTFOLIO_DATA: PortfolioData = {
       stack: ["Python", "Pyrogram", "MongoDB"],
       repoUrl: "https://github.com/AJBotVerse/",
     },
+    {
+      slug: "virtual-meet",
+      title: "Virtual Meet",
+      tagline:
+        "WebRTC peer-to-peer video conferencing and collaboration platform",
+      media: [
+        {
+          type: "image",
+          url: "/projects/virtual-meet-1.png",
+          alt: "Virtual Meet Video Conferencing Interface",
+        },
+      ],
+      description:
+        "Open-source video conferencing web application allowing users to host and join real-time virtual meetings with low-latency peer-to-peer audio/video streaming via WebRTC and PusherJS signaling.",
+      stats: [
+        { value: "WebRTC", label: "P2P streaming" },
+        { value: "PusherJS", label: "Real-time events" },
+        { value: "Next.js 14", label: "App Router" },
+      ],
+      stack: [
+        "Next.js",
+        "WebRTC",
+        "PeerJS",
+        "PusherJS",
+        "Tailwind CSS",
+        "TypeScript",
+      ],
+      repoUrl: "https://github.com/AJTimePyro/VirtualMeet",
+      liveUrl: "https://virtual-meet-aj.vercel.app/",
+    },
+    {
+      slug: "music-x",
+      title: "Music X",
+      tagline:
+        "Ads-free open-source music streaming platform powered by YouTube Music",
+      media: [
+        {
+          type: "image",
+          url: "/projects/music-x-1.png",
+          alt: "Music X Streaming Web App",
+        },
+      ],
+      description:
+        "Open-source ads-free music streaming web application built with React and Express.js, utilizing web scraping techniques and unofficial APIs to stream and discover music directly from YouTube Music.",
+      stats: [
+        { value: "Ads-Free", label: "Music streaming" },
+        { value: "YT Music", label: "Web scraped API" },
+        { value: "Full-Stack", label: "React & Express" },
+      ],
+      stack: [
+        "React",
+        "Tailwind CSS",
+        "Express.js",
+        "Node.js",
+        "Web Scraping",
+        "REST APIs",
+      ],
+      repoUrl: "https://github.com/AJTimePyro/music-x",
+      liveUrl: "https://music-x-gamma.vercel.app/",
+    },
   ],
   education: [
     {
